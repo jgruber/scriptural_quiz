@@ -4,7 +4,7 @@
  */
 "use strict";
 
-const CACHE = "scripture-quiz-v2";
+const CACHE = "scripture-quiz-v3";
 
 // App shell, relative to the service worker's scope.
 const ASSETS = [

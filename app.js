@@ -75,6 +75,7 @@
   // ----- question generation -----
   const ALL_REFS = uniq(DATA.scriptures.map((s) => s.ref));
   const ALL_SUMMARIES = uniq(DATA.scriptures.map((s) => s.summary));
+  const ALL_TEXTS = uniq(DATA.scriptures.map((s) => s.text));
 
   // Pick `count` distinct distractors, preferring the (topic-filtered) pool and
   // falling back to the global pool so there are always enough options.
@@ -93,16 +94,23 @@
     return chosen;
   }
 
-  function buildQuestion(scripture, type, refPool, summaryPool) {
+  function buildQuestion(scripture, type, pools) {
     let prompt, correct, pool, globalPool;
     if (type === "ref") {
+      // clue = passage text, options = references
       prompt = "Which scripture is this passage from?";
       correct = scripture.ref;
-      pool = refPool; globalPool = ALL_REFS;
+      pool = pools.ref; globalPool = ALL_REFS;
+    } else if (type === "passage") {
+      // clue = reference, options = passage texts (reverse of "ref")
+      prompt = "Which passage is this scripture?";
+      correct = scripture.text;
+      pool = pools.text; globalPool = ALL_TEXTS;
     } else {
+      // clue = passage text, options = truth summaries
       prompt = "What truth does this scripture teach?";
       correct = scripture.summary;
-      pool = summaryPool; globalPool = ALL_SUMMARIES;
+      pool = pools.summary; globalPool = ALL_SUMMARIES;
     }
     const distractors = pickDistractors(pool, globalPool, correct, 3);
     const options = shuffle([correct, ...distractors]);
@@ -111,19 +119,30 @@
 
   // Round-robin schedule honoring each player's chosen category and the topic filter.
   function generateSchedule(players, perPlayer, filtered) {
-    const refPool = uniq(filtered.map((s) => s.ref));
-    const summaryPool = uniq(filtered.map((s) => s.summary));
+    const pools = {
+      ref: uniq(filtered.map((s) => s.ref)),
+      summary: uniq(filtered.map((s) => s.summary)),
+      text: uniq(filtered.map((s) => s.text)),
+    };
     let bag = shuffle(filtered);
     const draw = () => {
       if (bag.length === 0) bag = shuffle(filtered);
       return bag.pop();
     };
+    // Scripture-identification questions randomly flip direction: "ref" shows
+    // the passage and asks for the reference, "passage" shows the reference and
+    // asks for the passage.
+    const pickType = (cat) => {
+      if (cat === "ref") return Math.random() < 0.5 ? "ref" : "passage";
+      if (cat === "meaning") return "meaning";
+      const r = Math.random();
+      return r < 1 / 3 ? "meaning" : r < 2 / 3 ? "ref" : "passage";
+    };
     const schedule = [];
     for (let round = 0; round < perPlayer; round++) {
       for (let p = 0; p < players.length; p++) {
-        const cat = players[p].category || "mixed";
-        const type = cat === "mixed" ? (Math.random() < 0.5 ? "ref" : "meaning") : cat;
-        schedule.push({ playerIndex: p, question: buildQuestion(draw(), type, refPool, summaryPool) });
+        const type = pickType(players[p].category || "mixed");
+        schedule.push({ playerIndex: p, question: buildQuestion(draw(), type, pools) });
       }
     }
     return schedule;
@@ -374,9 +393,13 @@
     const player = game.players[entry.playerIndex];
     const q = entry.question;
     const progress = (game.turn / game.schedule.length) * 100;
-    const badge = q.type === "ref"
-      ? `<span class="rounded-full bg-amber-100 px-2.5 py-1 text-xs font-semibold text-amber-700">Name the scripture</span>`
-      : `<span class="rounded-full bg-emerald-100 px-2.5 py-1 text-xs font-semibold text-emerald-700">Name the truth</span>`;
+    const BADGES = {
+      ref: ["bg-amber-100", "text-amber-700", "Name the scripture"],
+      passage: ["bg-sky-100", "text-sky-700", "Match the passage"],
+      meaning: ["bg-emerald-100", "text-emerald-700", "Name the truth"],
+    };
+    const [badgeBg, badgeText, badgeLabel] = BADGES[q.type] || BADGES.meaning;
+    const badge = `<span class="rounded-full ${badgeBg} px-2.5 py-1 text-xs font-semibold ${badgeText}">${badgeLabel}</span>`;
     const streakBadge = player.streak >= 2
       ? `<span class="text-xs font-semibold text-orange-500">🔥 ${player.streak}</span>` : "";
     const timerBlock = game.timerSec ? `
@@ -403,15 +426,20 @@
 
         ${timerBlock}
 
-        <div class="scripture-scroll mt-3 max-h-[40vh] overflow-y-auto rounded-2xl bg-white p-5 shadow-sm ring-1 ring-slate-200">
-          <p class="font-serif text-[1.05rem] leading-relaxed text-slate-800">${escapeHtml(q.scripture.text)}</p>
-        </div>
+        ${q.type === "passage"
+          ? `<div class="mt-3 rounded-2xl bg-white p-6 text-center shadow-sm ring-1 ring-slate-200">
+               <p class="text-xs uppercase tracking-wide text-slate-400">Scripture reference</p>
+               <p class="mt-1 font-serif text-2xl font-semibold text-slate-800">${escapeHtml(q.scripture.ref)}</p>
+             </div>`
+          : `<div class="scripture-scroll mt-3 max-h-[40vh] overflow-y-auto rounded-2xl bg-white p-5 shadow-sm ring-1 ring-slate-200">
+               <p class="font-serif text-[1.05rem] leading-relaxed text-slate-800">${escapeHtml(q.scripture.text)}</p>
+             </div>`}
 
         <p class="mt-5 text-center text-base font-semibold text-slate-700">${escapeHtml(q.prompt)}</p>
 
         <div id="options" class="mt-3 space-y-2.5">
           ${q.options.map((opt, i) => `
-            <button class="option w-full rounded-xl border border-slate-200 bg-white px-4 py-3.5 text-left text-[0.95rem] leading-snug text-slate-700 shadow-sm transition hover:border-indigo-300 hover:bg-indigo-50 active:scale-[.99]" data-i="${i}">
+            <button class="option w-full rounded-xl border border-slate-200 bg-white px-4 py-3.5 text-left ${q.type === "passage" ? "font-serif text-[0.95rem] leading-relaxed" : "text-[0.95rem] leading-snug"} text-slate-700 shadow-sm transition hover:border-indigo-300 hover:bg-indigo-50 active:scale-[.99]" data-i="${i}">
               <span class="mr-2 font-semibold text-slate-400">${String.fromCharCode(65 + i)}</span>${escapeHtml(opt)}
             </button>`).join("")}
         </div>
@@ -481,15 +509,16 @@
     const gained = base + timeBonus + streakBonus;
 
     // reveal
+    const typo = q.type === "passage" ? "font-serif text-[0.95rem] leading-relaxed" : "text-[0.95rem] leading-snug";
     const buttons = app.querySelectorAll(".option");
     buttons.forEach((btn, i) => {
       btn.disabled = true;
       if (i === correct) {
-        btn.className = "option w-full rounded-xl border-2 border-emerald-400 bg-emerald-50 px-4 py-3.5 text-left text-[0.95rem] leading-snug font-medium text-emerald-800 shadow-sm";
+        btn.className = `option w-full rounded-xl border-2 border-emerald-400 bg-emerald-50 px-4 py-3.5 text-left ${typo} font-medium text-emerald-800 shadow-sm`;
       } else if (i === choice) {
-        btn.className = "option w-full rounded-xl border-2 border-rose-300 bg-rose-50 px-4 py-3.5 text-left text-[0.95rem] leading-snug text-rose-700 shadow-sm";
+        btn.className = `option w-full rounded-xl border-2 border-rose-300 bg-rose-50 px-4 py-3.5 text-left ${typo} text-rose-700 shadow-sm`;
       } else {
-        btn.className = "option w-full rounded-xl border border-slate-200 bg-white px-4 py-3.5 text-left text-[0.95rem] leading-snug text-slate-400 opacity-70";
+        btn.className = `option w-full rounded-xl border border-slate-200 bg-white px-4 py-3.5 text-left ${typo} text-slate-400 opacity-70`;
       }
     });
 
