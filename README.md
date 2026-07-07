@@ -12,13 +12,28 @@ static site (e.g. GitHub Pages).
 ## How to play
 
 1. Add one or more players and choose how many questions each should answer.
-2. Players take turns on a single device (round-robin). A "pass the device"
+2. Optionally tune the round (all settings are remembered in your browser):
+   - **Per-player category** — each player picks 🔀 Mixed, 📖 Scripture, or 💡 Truth.
+   - **Topic filter** — limit questions to any of the 9 topics (or all of them).
+   - **Answer timer** — Off, 10s, 20s, or 30s per question.
+3. Players take turns on a single device (round-robin). A "pass the device"
    screen keeps the next player from seeing the previous answer.
-3. Each round mixes two kinds of question:
+4. Each question is one of two kinds:
    - **Name the scripture** — read the passage, then pick the correct citation.
    - **Name the truth** — read the passage, then pick the truth it teaches.
-4. After every player has answered, a ranked scoreboard declares the winner.
+5. After every player has answered, a ranked scoreboard declares the winner.
    Recent games are saved locally in your browser.
+
+## Scoring
+
+A correct answer earns **100 base points**, plus bonuses:
+
+- **Speed bonus** — up to **+50** for answering quickly (only when a timer is on).
+- **Streak bonus** — **+25** per consecutive correct answer (2nd in a row +25,
+  3rd +50 …), capped at +100. A wrong answer or a timeout resets the streak.
+
+The scoreboard ranks players by total points and shows each player's accuracy
+and best streak.
 
 ## The two question types
 
