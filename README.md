@@ -9,6 +9,10 @@ It's a single-page app — pure HTML, Tailwind CSS, and vanilla JavaScript, with
 build step and no backend. It runs entirely in the browser and can be hosted as a
 static site (e.g. GitHub Pages).
 
+It's also an installable **Progressive Web App**: on a phone you can add it to
+your home screen and it launches full-screen like a native app, and a service
+worker caches the app shell so it keeps working offline after the first visit.
+
 ## How to play
 
 1. Add one or more players and choose how many questions each should answer.
@@ -55,12 +59,31 @@ python3 -m http.server 8000
 > Tailwind CSS is loaded via its CDN, so an internet connection is needed for
 > styling on first load.
 
+## Installing on a phone (Add to Home Screen)
+
+The app must be served over **HTTPS** (or `localhost`) for install/offline to
+work — GitHub Pages does this automatically. Opening `index.html` from `file://`
+still plays, but won't register the service worker.
+
+- **Android / Chrome** — open the site, then tap the ⋮ menu → **Install app**
+  (or **Add to Home screen**).
+- **iOS / Safari** — open the site, tap the **Share** button, then
+  **Add to Home Screen**.
+
+Once installed it launches full-screen from its own icon and works offline.
+
 ## Project structure
 
 ```
-index.html   App shell, Tailwind config, mobile meta tags
-app.js       Game logic: setup, question generation, turns, scoring, results
-data.js      window.QUIZ_DATA — topics, truths, and 85 scriptures (NWT Study Edition)
+index.html            App shell, Tailwind config, mobile meta tags, PWA links
+app.js                Game logic: setup, question generation, turns, scoring, results
+data.js               window.QUIZ_DATA — topics, truths, and 85 scriptures (NWT Study Edition)
+manifest.webmanifest  PWA metadata (name, icons, theme) for installation
+sw.js                 Service worker — caches the app shell for offline use
+icon.svg              Source artwork for the app icons
+icon-192.png          App icon (also used as maskable icon)
+icon-512.png          App icon (also used as maskable icon)
+apple-touch-icon.png  Home-screen icon for iOS
 ```
 
 ## Data source

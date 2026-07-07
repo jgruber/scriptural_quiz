@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#6366f1"/>
+      <stop offset="1" stop-color="#4f46e5"/>
+    </linearGradient>
+  </defs>
+  <!-- Full-bleed background so the icon works as a maskable icon too. -->
+  <rect width="512" height="512" fill="url(#bg)"/>
+  <!-- Open book, centered within the maskable safe zone (~60% of the canvas). -->
+  <g transform="translate(256 262)" stroke="#eef2ff" stroke-width="10"
+     stroke-linejoin="round" stroke-linecap="round" fill="none">
+    <!-- spine + two pages -->
+    <path fill="#ffffff" d="M0 -84 C -34 -104, -92 -104, -126 -84 L -126 78 C -92 58, -34 58, 0 78 Z"/>
+    <path fill="#f8fafc" d="M0 -84 C 34 -104, 92 -104, 126 -84 L 126 78 C 92 58, 34 58, 0 78 Z"/>
+    <!-- text lines, left page -->
+    <path stroke="#c7d2fe" stroke-width="9" d="M-104 -58 H -22 M-104 -30 H -22 M-104 -2 H -22 M-104 26 H -40"/>
+    <!-- text lines, right page -->
+    <path stroke="#c7d2fe" stroke-width="9" d="M22 -58 H 104 M22 -30 H 104 M22 -2 H 104 M40 26 H 104"/>
+  </g>
+</svg>
