@@ -66,16 +66,22 @@
     return t.split(" ").map((w) => w.charAt(0) + w.slice(1).toLowerCase()).join(" ");
   }
 
-  const CATEGORIES = {
-    mixed: "🔀 Mixed",
-    ref: "📖 Scripture",
-    meaning: "💡 Truth",
-  };
+  // The kinds of question the quiz can ask. Players choose which are in play
+  // (via checkboxes on the setup screen); each question picks a random enabled
+  // kind. Order here is the display order on the setup screen.
+  const QTYPES = [
+    { key: "ref", label: "📖 Name the scripture", hint: "See the passage, pick the reference" },
+    { key: "passage", label: "🔎 Match the passage", hint: "See the reference, pick the passage" },
+    { key: "topic", label: "🏷️ Name the topic", hint: "See the reference, pick the topic" },
+    { key: "meaning", label: "💡 Name the truth", hint: "See the passage, pick the truth" },
+  ];
+  const QTYPE_KEYS = QTYPES.map((t) => t.key);
 
   // ----- question generation -----
   const ALL_REFS = uniq(DATA.scriptures.map((s) => s.ref));
   const ALL_SUMMARIES = uniq(DATA.scriptures.map((s) => s.summary));
   const ALL_TEXTS = uniq(DATA.scriptures.map((s) => s.text));
+  const ALL_TOPICS = uniq(DATA.scriptures.map((s) => s.topic));
 
   // Pick `count` distinct distractors, preferring the (topic-filtered) pool and
   // falling back to the global pool so there are always enough options.
@@ -106,6 +112,11 @@
       prompt = "Which passage is this scripture?";
       correct = scripture.text;
       pool = pools.text; globalPool = ALL_TEXTS;
+    } else if (type === "topic") {
+      // clue = reference, options = topics
+      prompt = "What topic does this scripture cover?";
+      correct = scripture.topic;
+      pool = pools.topic; globalPool = ALL_TOPICS;
     } else {
       // clue = passage text, options = truth summaries
       prompt = "What truth does this scripture teach?";
@@ -117,31 +128,25 @@
     return { type, prompt, scripture, options, correctIndex: options.indexOf(correct) };
   }
 
-  // Round-robin schedule honoring each player's chosen category and the topic filter.
-  function generateSchedule(players, perPlayer, filtered) {
+  // Round-robin schedule honoring the enabled question types and topic filter.
+  function generateSchedule(players, perPlayer, filtered, types) {
     const pools = {
       ref: uniq(filtered.map((s) => s.ref)),
       summary: uniq(filtered.map((s) => s.summary)),
       text: uniq(filtered.map((s) => s.text)),
+      topic: uniq(filtered.map((s) => s.topic)),
     };
     let bag = shuffle(filtered);
     const draw = () => {
       if (bag.length === 0) bag = shuffle(filtered);
       return bag.pop();
     };
-    // Scripture-identification questions randomly flip direction: "ref" shows
-    // the passage and asks for the reference, "passage" shows the reference and
-    // asks for the passage.
-    const pickType = (cat) => {
-      if (cat === "ref") return Math.random() < 0.5 ? "ref" : "passage";
-      if (cat === "meaning") return "meaning";
-      const r = Math.random();
-      return r < 1 / 3 ? "meaning" : r < 2 / 3 ? "ref" : "passage";
-    };
+    // Each question picks a random kind from the enabled types.
+    const pool = types && types.length ? types : QTYPE_KEYS;
     const schedule = [];
     for (let round = 0; round < perPlayer; round++) {
       for (let p = 0; p < players.length; p++) {
-        const type = pickType(players[p].category || "mixed");
+        const type = pool[Math.floor(Math.random() * pool.length)];
         schedule.push({ playerIndex: p, question: buildQuestion(draw(), type, pools) });
       }
     }
@@ -156,15 +161,15 @@
     if (tickHandle) { clearInterval(tickHandle); tickHandle = null; }
   }
 
-  function newGame(players, perPlayer, topics, timerSec) {
+  function newGame(players, perPlayer, topics, timerSec, types) {
     const filtered = DATA.scriptures.filter((s) => topics.includes(s.topic));
     const pls = players.map((p) => ({
-      name: p.name, category: p.category || "mixed",
+      name: p.name,
       score: 0, correct: 0, answered: 0, streak: 0, bestStreak: 0,
     }));
     game = {
-      players: pls, perPlayer, timerSec, topics,
-      schedule: generateSchedule(pls, perPlayer, filtered),
+      players: pls, perPlayer, timerSec, topics, types,
+      schedule: generateSchedule(pls, perPlayer, filtered, types),
       turn: 0, selected: null, deadline: null,
     };
   }
@@ -185,10 +190,8 @@
   function viewHome() {
     const savedPlayers = load(LS_PLAYERS, null);
     let players = Array.isArray(savedPlayers) && savedPlayers.length
-      ? savedPlayers.map((p) => (typeof p === "string"
-          ? { name: p, category: "mixed" }
-          : { name: p.name, category: p.category || "mixed" }))
-      : [{ name: "Player 1", category: "mixed" }, { name: "Player 2", category: "mixed" }];
+      ? savedPlayers.map((p) => ({ name: typeof p === "string" ? p : p.name }))
+      : [{ name: "Player 1" }, { name: "Player 2" }];
 
     const settings = load(LS_SETTINGS, {});
     let perPlayer = settings.perPlayer || 8;
@@ -197,6 +200,10 @@
       ? DATA.topics.filter((t) => settings.topics.includes(t))
       : DATA.topics.slice();
     if (selTopics.length === 0) selTopics = DATA.topics.slice();
+    let selTypes = Array.isArray(settings.types) && settings.types.length
+      ? QTYPE_KEYS.filter((k) => settings.types.includes(k))
+      : QTYPE_KEYS.slice();
+    if (selTypes.length === 0) selTypes = QTYPE_KEYS.slice();
 
     function draw() {
       const history = load(LS_HISTORY, []);
@@ -210,7 +217,7 @@
         <section class="rounded-2xl bg-white p-5 shadow-sm ring-1 ring-slate-200">
           <div class="flex items-center justify-between">
             <h2 class="text-sm font-semibold uppercase tracking-wide text-slate-500">Players</h2>
-            <span class="text-xs text-slate-400">each picks their categories</span>
+            <span class="text-xs text-slate-400">pass &amp; play</span>
           </div>
           <div id="players" class="mt-3 space-y-2">
             ${players.map((p, i) => playerRow(p, i, players.length)).join("")}
@@ -236,6 +243,21 @@
         </section>
 
         <section class="mt-4 rounded-2xl bg-white p-5 shadow-sm ring-1 ring-slate-200">
+          <div class="flex items-center justify-between">
+            <h2 class="text-sm font-semibold uppercase tracking-wide text-slate-500">Question types</h2>
+            <div class="text-xs">
+              <button id="typeAll" class="text-indigo-600 hover:underline">All</button>
+              <span class="text-slate-300">·</span>
+              <button id="typeNone" class="text-indigo-600 hover:underline">None</button>
+            </div>
+          </div>
+          <div id="types" class="mt-3 space-y-2">
+            ${QTYPES.map((t) => typeRow(t, selTypes.includes(t.key))).join("")}
+          </div>
+          <p id="typeWarn" class="mt-2 hidden text-xs text-rose-500">Select at least one question type.</p>
+        </section>
+
+        <section class="mt-4 rounded-2xl bg-white p-5 shadow-sm ring-1 ring-slate-200">
           <h2 class="text-sm font-semibold uppercase tracking-wide text-slate-500">Questions per player</h2>
           <div class="mt-2 flex items-center gap-3">
             <input id="perPlayer" type="range" min="3" max="20" value="${perPlayer}" class="flex-1 accent-indigo-600" />
@@ -257,20 +279,30 @@
         ${history.length ? recentGames(history) : ""}
       `);
 
-      // player name + category + remove
+      // player name + remove
       app.querySelectorAll(".player-name").forEach((inp) => {
         inp.addEventListener("input", (e) => { players[+e.target.dataset.i].name = e.target.value; });
-      });
-      app.querySelectorAll(".player-cat").forEach((sel) => {
-        sel.addEventListener("change", (e) => { players[+e.target.dataset.i].category = e.target.value; });
       });
       app.querySelectorAll(".player-remove").forEach((btn) => {
         btn.addEventListener("click", (e) => { players.splice(+e.currentTarget.dataset.i, 1); draw(); });
       });
       app.querySelector("#addPlayer").addEventListener("click", () => {
-        players.push({ name: "Player " + (players.length + 1), category: "mixed" });
+        players.push({ name: "Player " + (players.length + 1) });
         draw();
       });
+
+      // question types
+      app.querySelectorAll(".type-check").forEach((box) => {
+        box.addEventListener("change", (e) => {
+          const k = e.target.dataset.key;
+          const idx = selTypes.indexOf(k);
+          if (e.target.checked) { if (idx < 0) selTypes.push(k); }
+          else if (idx >= 0) selTypes.splice(idx, 1);
+          syncTypes();
+        });
+      });
+      app.querySelector("#typeAll").addEventListener("click", () => { selTypes = QTYPE_KEYS.slice(); syncTypes(); });
+      app.querySelector("#typeNone").addEventListener("click", () => { selTypes = []; syncTypes(); });
 
       // topics
       app.querySelectorAll(".topic-chip").forEach((btn) => {
@@ -301,17 +333,31 @@
       });
 
       app.querySelector("#start").addEventListener("click", () => {
-        const clean = players.map((p) => ({ name: p.name.trim(), category: p.category }))
+        const clean = players.map((p) => ({ name: p.name.trim() }))
           .filter((p) => p.name);
         if (clean.length === 0) { alert("Add at least one player."); return; }
         if (selTopics.length === 0) { app.querySelector("#topicWarn").classList.remove("hidden"); return; }
+        if (selTypes.length === 0) { app.querySelector("#typeWarn").classList.remove("hidden"); return; }
+        // keep the enabled types in the canonical display order
+        const types = QTYPE_KEYS.filter((k) => selTypes.includes(k));
         save(LS_PLAYERS, clean);
-        save(LS_SETTINGS, { perPlayer, timerSec, topics: selTopics });
-        newGame(clean, perPlayer, selTopics, timerSec);
+        save(LS_SETTINGS, { perPlayer, timerSec, topics: selTopics, types });
+        newGame(clean, perPlayer, selTopics, timerSec, types);
         viewTurnIntro();
       });
       const clearBtn = app.querySelector("#clearHistory");
       if (clearBtn) clearBtn.addEventListener("click", () => { save(LS_HISTORY, []); draw(); });
+
+      function syncTypes() {
+        app.querySelectorAll(".type-row").forEach((row) => {
+          const on = selTypes.includes(row.dataset.key);
+          row.className = "type-row flex cursor-pointer items-center gap-3 rounded-xl border " +
+            (on ? "border-indigo-300 bg-indigo-50" : "border-slate-200 bg-slate-50") + " px-3 py-2.5 transition";
+          const box = row.querySelector(".type-check");
+          if (box) box.checked = on;
+        });
+        app.querySelector("#typeWarn").classList.toggle("hidden", selTypes.length > 0);
+      }
 
       function syncTopics() {
         app.querySelectorAll(".topic-chip").forEach((btn) => {
@@ -328,11 +374,19 @@
           <span class="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-indigo-100 text-sm font-semibold text-indigo-700">${i + 1}</span>
           <input class="player-name min-w-0 flex-1 rounded-xl border border-slate-200 bg-slate-50 px-3 py-2.5 text-sm focus:border-indigo-400 focus:outline-none focus:ring-2 focus:ring-indigo-100"
                  data-i="${i}" value="${escapeHtml(p.name)}" maxlength="24" placeholder="Name" />
-          <select class="player-cat shrink-0 rounded-xl border border-slate-200 bg-slate-50 px-2 py-2.5 text-sm text-slate-600 focus:border-indigo-400 focus:outline-none" data-i="${i}" aria-label="Question category">
-            ${Object.entries(CATEGORIES).map(([v, lbl]) => `<option value="${v}" ${p.category === v ? "selected" : ""}>${lbl}</option>`).join("")}
-          </select>
           ${count > 1 ? `<button class="player-remove shrink-0 rounded-lg p-2 text-slate-400 hover:bg-rose-50 hover:text-rose-500" data-i="${i}" aria-label="Remove">✕</button>` : ""}
         </div>`;
+    }
+
+    function typeRow(t, on) {
+      return `
+        <label class="type-row flex cursor-pointer items-center gap-3 rounded-xl border ${on ? "border-indigo-300 bg-indigo-50" : "border-slate-200 bg-slate-50"} px-3 py-2.5 transition" data-key="${t.key}">
+          <input type="checkbox" class="type-check h-4 w-4 shrink-0 accent-indigo-600" data-key="${t.key}" ${on ? "checked" : ""} />
+          <span class="min-w-0">
+            <span class="block text-sm font-medium text-slate-700">${t.label}</span>
+            <span class="block text-xs text-slate-400">${t.hint}</span>
+          </span>
+        </label>`;
     }
 
     function topicChipClass(on) {
@@ -374,7 +428,6 @@
         <p class="text-sm font-medium uppercase tracking-wide text-indigo-500">Question ${game.turn + 1} of ${game.schedule.length}</p>
         <p class="mt-6 text-sm text-slate-500">Pass the device to</p>
         <h1 class="mt-2 text-4xl font-bold text-slate-900">${escapeHtml(player.name)}</h1>
-        <p class="mt-1 text-xs uppercase tracking-wide text-slate-400">${CATEGORIES[player.category]}</p>
         <p class="mt-4 text-sm text-slate-400">Round ${round} of ${game.perPlayer} &middot; ${player.score} pts</p>
         ${streakLine}
         <button id="ready" class="mt-8 w-full max-w-xs rounded-xl bg-indigo-600 py-3.5 text-base font-semibold text-white shadow-sm transition hover:bg-indigo-700 active:scale-[.99]">
@@ -396,6 +449,7 @@
     const BADGES = {
       ref: ["bg-amber-100", "text-amber-700", "Name the scripture"],
       passage: ["bg-sky-100", "text-sky-700", "Match the passage"],
+      topic: ["bg-violet-100", "text-violet-700", "Name the topic"],
       meaning: ["bg-emerald-100", "text-emerald-700", "Name the truth"],
     };
     const [badgeBg, badgeText, badgeLabel] = BADGES[q.type] || BADGES.meaning;
@@ -421,12 +475,12 @@
         </div>
 
         <div class="mt-3 flex items-center gap-2">${badge}
-          <span class="text-xs uppercase tracking-wide text-slate-400">${escapeHtml(niceTopic(q.scripture.topic))}</span>
+          ${q.type === "topic" ? "" : `<span class="text-xs uppercase tracking-wide text-slate-400">${escapeHtml(niceTopic(q.scripture.topic))}</span>`}
         </div>
 
         ${timerBlock}
 
-        ${q.type === "passage"
+        ${q.type === "passage" || q.type === "topic"
           ? `<div class="mt-3 rounded-2xl bg-white p-6 text-center shadow-sm ring-1 ring-slate-200">
                <p class="text-xs uppercase tracking-wide text-slate-400">Scripture reference</p>
                <p class="mt-1 font-serif text-2xl font-semibold text-slate-800">${escapeHtml(q.scripture.ref)}</p>
@@ -440,7 +494,7 @@
         <div id="options" class="mt-3 space-y-2.5">
           ${q.options.map((opt, i) => `
             <button class="option w-full rounded-xl border border-slate-200 bg-white px-4 py-3.5 text-left ${q.type === "passage" ? "font-serif text-[0.95rem] leading-relaxed" : "text-[0.95rem] leading-snug"} text-slate-700 shadow-sm transition hover:border-indigo-300 hover:bg-indigo-50 active:scale-[.99]" data-i="${i}">
-              <span class="mr-2 font-semibold text-slate-400">${String.fromCharCode(65 + i)}</span>${escapeHtml(opt)}
+              <span class="mr-2 font-semibold text-slate-400">${String.fromCharCode(65 + i)}</span>${escapeHtml(q.type === "topic" ? niceTopic(opt) : opt)}
             </button>`).join("")}
         </div>
 
@@ -602,8 +656,8 @@
     `);
     app.querySelector("#again").addEventListener("click", () => {
       newGame(
-        game.players.map((p) => ({ name: p.name, category: p.category })),
-        game.perPlayer, game.topics, game.timerSec
+        game.players.map((p) => ({ name: p.name })),
+        game.perPlayer, game.topics, game.timerSec, game.types
       );
       viewTurnIntro();
     });
