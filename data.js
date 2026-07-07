@@ -23,15 +23,15 @@ window.QUIZ_DATA = {
         },
         {
           "ref": "Matt. 24:7, 8",
-          "text": "“For nation will rise against nation and kingdom against kingdom, and there will be food shortages and earthquakes in one place after another. [8] All these things are a beginning of pangs of distress."
+          "text": "“For nation will rise against nation and kingdom against kingdom, and there will be food shortages and earthquakes in one place after another. All these things are a beginning of pangs of distress."
         },
         {
           "ref": "Luke 21:10, 11",
-          "text": "Then he said to them: “Nation will rise against nation, and kingdom against kingdom. [11] There will be great earthquakes, and in one place after another food shortages and pestilences; and there will be fearful sights and from heaven great signs."
+          "text": "Then he said to them: “Nation will rise against nation, and kingdom against kingdom. There will be great earthquakes, and in one place after another food shortages and pestilences; and there will be fearful sights and from heaven great signs."
         },
         {
           "ref": "2 Tim. 3:1-5",
-          "text": "But know this, that in the last days critical times hard to deal with will be here. [2] For men will be lovers of themselves, lovers of money, boastful, haughty, blasphemers, disobedient to parents, unthankful, disloyal, [3] having no natural affection, not open to any agreement, slanderers, without self-control, fierce, without love of goodness, [4] betrayers, headstrong, puffed up with pride, lovers of pleasures rather than lovers of God, [5] having an appearance of godliness but proving false to its power; and from these turn away."
+          "text": "But know this, that in the last days critical times hard to deal with will be here. For men will be lovers of themselves, lovers of money, boastful, haughty, blasphemers, disobedient to parents, unthankful, disloyal, having no natural affection, not open to any agreement, slanderers, without self-control, fierce, without love of goodness, betrayers, headstrong, puffed up with pride, lovers of pleasures rather than lovers of God, having an appearance of godliness but proving false to its power; and from these turn away."
         }
       ]
     },
@@ -59,7 +59,7 @@ window.QUIZ_DATA = {
       "scriptures": [
         {
           "ref": "Isa. 35:1, 2",
-          "text": "The wilderness and the parched land will exult, And the desert plain will be joyful and blossom as the saffron. [2] Without fail it will blossom; It will rejoice and shout for joy. The glory of Lebʹa·non will be given to it, The splendor of Carʹmel and of Sharʹon. They will see the glory of Jehovah, the splendor of our God."
+          "text": "The wilderness and the parched land will exult, And the desert plain will be joyful and blossom as the saffron. Without fail it will blossom; It will rejoice and shout for joy. The glory of Lebʹa·non will be given to it, The splendor of Carʹmel and of Sharʹon. They will see the glory of Jehovah, the splendor of our God."
         },
         {
           "ref": "Rev. 11:18",
@@ -79,7 +79,7 @@ window.QUIZ_DATA = {
         },
         {
           "ref": "Isa. 35:5, 6",
-          "text": "At that time the eyes of the blind will be opened, And the ears of the deaf will be unstopped. [6] At that time the lame will leap like the deer, And the tongue of the speechless will shout for joy. For waters will burst forth in the wilderness, And streams in the desert plain."
+          "text": "At that time the eyes of the blind will be opened, And the ears of the deaf will be unstopped. At that time the lame will leap like the deer, And the tongue of the speechless will shout for joy. For waters will burst forth in the wilderness, And streams in the desert plain."
         }
       ]
     },
@@ -143,7 +143,7 @@ window.QUIZ_DATA = {
         },
         {
           "ref": "Matt. 19:4-6",
-          "text": "In reply he said: “Have you not read that the one who created them from the beginning made them male and female [5] and said: ‘For this reason a man will leave his father and his mother and will stick to his wife, and the two will be one flesh’? [6] So that they are no longer two, but one flesh. Therefore, what God has yoked together, let no man put apart.”"
+          "text": "In reply he said: “Have you not read that the one who created them from the beginning made them male and female and said: ‘For this reason a man will leave his father and his mother and will stick to his wife, and the two will be one flesh’? So that they are no longer two, but one flesh. Therefore, what God has yoked together, let no man put apart.”"
         },
         {
           "ref": "Matt. 19:9",
@@ -163,11 +163,11 @@ window.QUIZ_DATA = {
       "scriptures": [
         {
           "ref": "Prov. 1:8, 9",
-          "text": "Listen, my son, to the discipline of your father, And do not forsake the instruction of your mother. [9] They are an attractive wreath for your head And a fine ornament for your neck."
+          "text": "Listen, my son, to the discipline of your father, And do not forsake the instruction of your mother. They are an attractive wreath for your head And a fine ornament for your neck."
         },
         {
           "ref": "Eph. 6:1-3",
-          "text": "Children, be obedient to your parents in union with the Lord, for this is righteous. [2] “Honor your father and your mother” is the first command with a promise: [3] “That it may go well with you and you may remain a long time on the earth.”"
+          "text": "Children, be obedient to your parents in union with the Lord, for this is righteous. “Honor your father and your mother” is the first command with a promise: “That it may go well with you and you may remain a long time on the earth.”"
         }
       ]
     },
@@ -195,11 +195,11 @@ window.QUIZ_DATA = {
       "scriptures": [
         {
           "ref": "2 Tim. 3:16, 17",
-          "text": "All Scripture is inspired of God and beneficial for teaching, for reproving, for setting things straight, for disciplining in righteousness, [17] so that the man of God may be fully competent, completely equipped for every good work."
+          "text": "All Scripture is inspired of God and beneficial for teaching, for reproving, for setting things straight, for disciplining in righteousness, so that the man of God may be fully competent, completely equipped for every good work."
         },
         {
           "ref": "2 Pet. 1:20, 21",
-          "text": "For you know this first, that no prophecy of Scripture springs from any private interpretation. [21] For prophecy was at no time brought by man’s will, but men spoke from God as they were moved by holy spirit."
+          "text": "For you know this first, that no prophecy of Scripture springs from any private interpretation. For prophecy was at no time brought by man’s will, but men spoke from God as they were moved by holy spirit."
         }
       ]
     },
@@ -215,7 +215,7 @@ window.QUIZ_DATA = {
         },
         {
           "ref": "Acts 10:34, 35",
-          "text": "At this Peter began to speak, and he said: “Now I truly understand that God is not partial, [35] but in every nation the man who fears him and does what is right is acceptable to him."
+          "text": "At this Peter began to speak, and he said: “Now I truly understand that God is not partial, but in every nation the man who fears him and does what is right is acceptable to him."
         }
       ]
     },
@@ -231,7 +231,7 @@ window.QUIZ_DATA = {
         },
         {
           "ref": "Ps. 145:18, 19",
-          "text": "Jehovah is near to all those calling on him, To all who call on him in truth. [19] He satisfies the desire of those who fear him; He hears their cry for help, and he rescues them."
+          "text": "Jehovah is near to all those calling on him, To all who call on him in truth. He satisfies the desire of those who fear him; He hears their cry for help, and he rescues them."
         }
       ]
     },
@@ -263,11 +263,11 @@ window.QUIZ_DATA = {
       "scriptures": [
         {
           "ref": "Matt. 6:7-13",
-          "text": "When praying, do not say the same things over and over again as the people of the nations do, for they imagine they will get a hearing for their use of many words. [8] So do not be like them, for your Father knows what you need even before you ask him. [9] “You must pray, then, this way: “‘Our Father in the heavens, let your name be sanctified. [10] Let your Kingdom come. Let your will take place, as in heaven, also on earth. [11] Give us today our bread for this day; [12] and forgive us our debts, as we also have forgiven our debtors. [13] And do not bring us into temptation, but deliver us from the wicked one.’"
+          "text": "When praying, do not say the same things over and over again as the people of the nations do, for they imagine they will get a hearing for their use of many words. So do not be like them, for your Father knows what you need even before you ask him. “You must pray, then, this way: “‘Our Father in the heavens, let your name be sanctified. Let your Kingdom come. Let your will take place, as in heaven, also on earth. Give us today our bread for this day; and forgive us our debts, as we also have forgiven our debtors. And do not bring us into temptation, but deliver us from the wicked one.’"
         },
         {
           "ref": "Luke 11:1-4",
-          "text": "Now he was in a certain place praying, and when he stopped, one of his disciples said to him: “Lord, teach us how to pray, just as John also taught his disciples.” [2] So he said to them: “Whenever you pray, say: ‘Father, let your name be sanctified. Let your Kingdom come. [3] Give us each day our bread according to our daily needs. [4] And forgive us our sins, for we ourselves also forgive everyone who is in debt to us; and do not bring us into temptation.’”"
+          "text": "Now he was in a certain place praying, and when he stopped, one of his disciples said to him: “Lord, teach us how to pray, just as John also taught his disciples.” So he said to them: “Whenever you pray, say: ‘Father, let your name be sanctified. Let your Kingdom come. Give us each day our bread according to our daily needs. And forgive us our sins, for we ourselves also forgive everyone who is in debt to us; and do not bring us into temptation.’”"
         }
       ]
     },
@@ -279,7 +279,7 @@ window.QUIZ_DATA = {
       "scriptures": [
         {
           "ref": "Matt. 7:7, 8",
-          "text": "“Keep on asking, and it will be given you; keep on seeking, and you will find; keep on knocking, and it will be opened to you; [8] for everyone asking receives, and everyone seeking finds, and to everyone knocking, it will be opened."
+          "text": "“Keep on asking, and it will be given you; keep on seeking, and you will find; keep on knocking, and it will be opened to you; for everyone asking receives, and everyone seeking finds, and to everyone knocking, it will be opened."
         },
         {
           "ref": "1 Thess. 5:17",
@@ -295,7 +295,7 @@ window.QUIZ_DATA = {
       "scriptures": [
         {
           "ref": "Matt. 6:14, 15",
-          "text": "“For if you forgive men their trespasses, your heavenly Father will also forgive you; [15] whereas if you do not forgive men their trespasses, neither will your Father forgive your trespasses."
+          "text": "“For if you forgive men their trespasses, your heavenly Father will also forgive you; whereas if you do not forgive men their trespasses, neither will your Father forgive your trespasses."
         },
         {
           "ref": "Matt. 6:34",
@@ -319,7 +319,7 @@ window.QUIZ_DATA = {
         },
         {
           "ref": "Matt. 24:7, 8",
-          "text": "“For nation will rise against nation and kingdom against kingdom, and there will be food shortages and earthquakes in one place after another. [8] All these things are a beginning of pangs of distress."
+          "text": "“For nation will rise against nation and kingdom against kingdom, and there will be food shortages and earthquakes in one place after another. All these things are a beginning of pangs of distress."
         },
         {
           "ref": "Matt. 24:14",
@@ -327,7 +327,7 @@ window.QUIZ_DATA = {
         },
         {
           "ref": "Luke 21:10, 11",
-          "text": "Then he said to them: “Nation will rise against nation, and kingdom against kingdom. [11] There will be great earthquakes, and in one place after another food shortages and pestilences; and there will be fearful sights and from heaven great signs."
+          "text": "Then he said to them: “Nation will rise against nation, and kingdom against kingdom. There will be great earthquakes, and in one place after another food shortages and pestilences; and there will be fearful sights and from heaven great signs."
         }
       ]
     },
@@ -379,11 +379,11 @@ window.QUIZ_DATA = {
         },
         {
           "ref": "Dan. 7:13, 14",
-          "text": "“I kept watching in the visions of the night, and look! with the clouds of the heavens, someone like a son of man was coming; and he gained access to the Ancient of Days, and they brought him up close before that One. [14] And to him there were given rulership, honor, and a kingdom, that the peoples, nations, and language groups should all serve him. His rulership is an everlasting rulership that will not pass away, and his kingdom will not be destroyed."
+          "text": "“I kept watching in the visions of the night, and look! with the clouds of the heavens, someone like a son of man was coming; and he gained access to the Ancient of Days, and they brought him up close before that One. And to him there were given rulership, honor, and a kingdom, that the peoples, nations, and language groups should all serve him. His rulership is an everlasting rulership that will not pass away, and his kingdom will not be destroyed."
         },
         {
           "ref": "Matt. 6:9, 10",
-          "text": "“You must pray, then, this way: “‘Our Father in the heavens, let your name be sanctified. [10] Let your Kingdom come. Let your will take place, as in heaven, also on earth."
+          "text": "“You must pray, then, this way: “‘Our Father in the heavens, let your name be sanctified. Let your Kingdom come. Let your will take place, as in heaven, also on earth."
         },
         {
           "ref": "Rev. 11:15",
@@ -399,7 +399,7 @@ window.QUIZ_DATA = {
       "scriptures": [
         {
           "ref": "Ps. 2:7-9",
-          "text": "Let me proclaim the decree of Jehovah; He said to me: “You are my son; Today I have become your father. [8] Ask of me, and I will give nations as your inheritance And the ends of the earth as your possession. [9] You will break them with an iron scepter, And you will smash them like a piece of pottery.”"
+          "text": "Let me proclaim the decree of Jehovah; He said to me: “You are my son; Today I have become your father. Ask of me, and I will give nations as your inheritance And the ends of the earth as your possession. You will break them with an iron scepter, And you will smash them like a piece of pottery.”"
         },
         {
           "ref": "Dan. 2:44",
@@ -415,7 +415,7 @@ window.QUIZ_DATA = {
       "scriptures": [
         {
           "ref": "Ps. 37:10, 11",
-          "text": "Just a little while longer, and the wicked will be no more; You will look at where they were, And they will not be there. [11] But the meek will possess the earth, And they will find exquisite delight in the abundance of peace."
+          "text": "Just a little while longer, and the wicked will be no more; You will look at where they were, And they will not be there. But the meek will possess the earth, And they will find exquisite delight in the abundance of peace."
         },
         {
           "ref": "Ps. 46:9",
@@ -423,7 +423,7 @@ window.QUIZ_DATA = {
         },
         {
           "ref": "Isa. 65:21-23",
-          "text": "They will build houses and live in them, And they will plant vineyards and eat their fruitage. [22] They will not build for someone else to inhabit, Nor will they plant for others to eat. For the days of my people will be like the days of a tree, And the work of their hands my chosen ones will enjoy to the full. [23] They will not toil for nothing, Nor will they bear children for distress, Because they are the offspring made up of those blessed by Jehovah, And their descendants with them."
+          "text": "They will build houses and live in them, And they will plant vineyards and eat their fruitage. They will not build for someone else to inhabit, Nor will they plant for others to eat. For the days of my people will be like the days of a tree, And the work of their hands my chosen ones will enjoy to the full. They will not toil for nothing, Nor will they bear children for distress, Because they are the offspring made up of those blessed by Jehovah, And their descendants with them."
         }
       ]
     },
@@ -451,7 +451,7 @@ window.QUIZ_DATA = {
       "scriptures": [
         {
           "ref": "Luke 4:5, 6",
-          "text": "So he brought him up and showed him all the kingdoms of the inhabited earth in an instant of time. [6] Then the Devil said to him: “I will give you all this authority and their glory, because it has been handed over to me, and I give it to whomever I wish."
+          "text": "So he brought him up and showed him all the kingdoms of the inhabited earth in an instant of time. Then the Devil said to him: “I will give you all this authority and their glory, because it has been handed over to me, and I give it to whomever I wish."
         },
         {
           "ref": "1 John 5:19",
@@ -467,7 +467,7 @@ window.QUIZ_DATA = {
       "scriptures": [
         {
           "ref": "Ps. 34:17-19",
-          "text": "They cried out, and Jehovah heard; He rescued them from all their distresses. [18] Jehovah is close to the brokenhearted; He saves those who are crushed in spirit. [19] Many are the hardships of the righteous one, But Jehovah rescues him from them all."
+          "text": "They cried out, and Jehovah heard; He rescued them from all their distresses. Jehovah is close to the brokenhearted; He saves those who are crushed in spirit. Many are the hardships of the righteous one, But Jehovah rescues him from them all."
         },
         {
           "ref": "Isa. 41:10",
@@ -491,7 +491,7 @@ window.QUIZ_DATA = {
         },
         {
           "ref": "Rev. 21:3, 4",
-          "text": "With that I heard a loud voice from the throne say: “Look! The tent of God is with mankind, and he will reside with them, and they will be his people. And God himself will be with them. [4] And he will wipe out every tear from their eyes, and death will be no more, neither will mourning nor outcry nor pain be anymore. The former things have passed away.”"
+          "text": "With that I heard a loud voice from the throne say: “Look! The tent of God is with mankind, and he will reside with them, and they will be his people. And God himself will be with them. And he will wipe out every tear from their eyes, and death will be no more, neither will mourning nor outcry nor pain be anymore. The former things have passed away.”"
         }
       ]
     },
@@ -507,7 +507,7 @@ window.QUIZ_DATA = {
         },
         {
           "ref": "John 11:11-14",
-          "text": "After he said these things, he added: “Lazʹa·rus our friend has fallen asleep, but I am traveling there to awaken him.” [12] The disciples then said to him: “Lord, if he is sleeping, he will get well.” [13] Jesus, however, had spoken about his death. But they imagined he was speaking about taking rest in sleep. [14] Then Jesus said to them plainly: “Lazʹa·rus has died,"
+          "text": "After he said these things, he added: “Lazʹa·rus our friend has fallen asleep, but I am traveling there to awaken him.” The disciples then said to him: “Lord, if he is sleeping, he will get well.” Jesus, however, had spoken about his death. But they imagined he was speaking about taking rest in sleep. Then Jesus said to them plainly: “Lazʹa·rus has died,"
         }
       ]
     },
@@ -539,11 +539,11 @@ window.QUIZ_DATA = {
       "scriptures": [
         {
           "ref": "Job 14:13-15",
-          "text": "O that in the Grave you would conceal me, That you would hide me until your anger passes by, That you would set a time limit for me and remember me! [14] If a man dies, can he live again? I will wait all the days of my compulsory service Until my relief comes. [15] You will call, and I will answer you. You will long for the work of your hands."
+          "text": "O that in the Grave you would conceal me, That you would hide me until your anger passes by, That you would set a time limit for me and remember me! If a man dies, can he live again? I will wait all the days of my compulsory service Until my relief comes. You will call, and I will answer you. You will long for the work of your hands."
         },
         {
           "ref": "John 5:28, 29",
-          "text": "Do not be amazed at this, for the hour is coming in which all those in the memorial tombs will hear his voice [29] and come out, those who did good things to a resurrection of life, and those who practiced vile things to a resurrection of judgment."
+          "text": "Do not be amazed at this, for the hour is coming in which all those in the memorial tombs will hear his voice and come out, those who did good things to a resurrection of life, and those who practiced vile things to a resurrection of judgment."
         },
         {
           "ref": "Acts 24:15",
@@ -559,7 +559,7 @@ window.QUIZ_DATA = {
       "scriptures": [
         {
           "ref": "Rev. 21:3, 4",
-          "text": "With that I heard a loud voice from the throne say: “Look! The tent of God is with mankind, and he will reside with them, and they will be his people. And God himself will be with them. [4] And he will wipe out every tear from their eyes, and death will be no more, neither will mourning nor outcry nor pain be anymore. The former things have passed away.”"
+          "text": "With that I heard a loud voice from the throne say: “Look! The tent of God is with mankind, and he will reside with them, and they will be his people. And God himself will be with them. And he will wipe out every tear from their eyes, and death will be no more, neither will mourning nor outcry nor pain be anymore. The former things have passed away.”"
         },
         {
           "ref": "Isa. 25:8",
@@ -579,11 +579,11 @@ window.QUIZ_DATA = {
         },
         {
           "ref": "Matt. 7:13, 14",
-          "text": "“Go in through the narrow gate, because broad is the gate and spacious is the road leading off into destruction, and many are going in through it; [14] whereas narrow is the gate and cramped the road leading off into life, and few are finding it."
+          "text": "“Go in through the narrow gate, because broad is the gate and spacious is the road leading off into destruction, and many are going in through it; whereas narrow is the gate and cramped the road leading off into life, and few are finding it."
         },
         {
           "ref": "Matt. 7:21-23",
-          "text": "“Not everyone saying to me, ‘Lord, Lord,’ will enter into the Kingdom of the heavens, but only the one doing the will of my Father who is in the heavens will. [22] Many will say to me in that day: ‘Lord, Lord, did we not prophesy in your name, and expel demons in your name, and perform many powerful works in your name?’ [23] And then I will declare to them: ‘I never knew you! Get away from me, you workers of lawlessness!’"
+          "text": "“Not everyone saying to me, ‘Lord, Lord,’ will enter into the Kingdom of the heavens, but only the one doing the will of my Father who is in the heavens will. Many will say to me in that day: ‘Lord, Lord, did we not prophesy in your name, and expel demons in your name, and perform many powerful works in your name?’ And then I will declare to them: ‘I never knew you! Get away from me, you workers of lawlessness!’"
         }
       ]
     },
@@ -603,7 +603,7 @@ window.QUIZ_DATA = {
         },
         {
           "ref": "Mark 7:6-8",
-          "text": "He said to them: “Isaiah aptly prophesied about you hypocrites, as it is written, ‘This people honor me with their lips, but their hearts are far removed from me. [7] It is in vain that they keep worshipping me, for they teach commands of men as doctrines.’ [8] You let go of the commandment of God and cling to the tradition of men.”"
+          "text": "He said to them: “Isaiah aptly prophesied about you hypocrites, as it is written, ‘This people honor me with their lips, but their hearts are far removed from me. It is in vain that they keep worshipping me, for they teach commands of men as doctrines.’ You let go of the commandment of God and cling to the tradition of men.”"
         }
       ]
     },
@@ -619,7 +619,7 @@ window.QUIZ_DATA = {
         },
         {
           "ref": "John 13:34, 35",
-          "text": "I am giving you a new commandment, that you love one another; just as I have loved you, you also love one another. [35] By this all will know that you are my disciples—if you have love among yourselves.”"
+          "text": "I am giving you a new commandment, that you love one another; just as I have loved you, you also love one another. By this all will know that you are my disciples—if you have love among yourselves.”"
         }
       ]
     }
@@ -634,21 +634,21 @@ window.QUIZ_DATA = {
     },
     {
       "ref": "Matt. 24:7, 8",
-      "text": "“For nation will rise against nation and kingdom against kingdom, and there will be food shortages and earthquakes in one place after another. [8] All these things are a beginning of pangs of distress.",
+      "text": "“For nation will rise against nation and kingdom against kingdom, and there will be food shortages and earthquakes in one place after another. All these things are a beginning of pangs of distress.",
       "summary": "Current events and attitudes indicate a change is near.",
       "topic": "THE FUTURE",
       "truthId": 1
     },
     {
       "ref": "Luke 21:10, 11",
-      "text": "Then he said to them: “Nation will rise against nation, and kingdom against kingdom. [11] There will be great earthquakes, and in one place after another food shortages and pestilences; and there will be fearful sights and from heaven great signs.",
+      "text": "Then he said to them: “Nation will rise against nation, and kingdom against kingdom. There will be great earthquakes, and in one place after another food shortages and pestilences; and there will be fearful sights and from heaven great signs.",
       "summary": "Current events and attitudes indicate a change is near.",
       "topic": "THE FUTURE",
       "truthId": 1
     },
     {
       "ref": "2 Tim. 3:1-5",
-      "text": "But know this, that in the last days critical times hard to deal with will be here. [2] For men will be lovers of themselves, lovers of money, boastful, haughty, blasphemers, disobedient to parents, unthankful, disloyal, [3] having no natural affection, not open to any agreement, slanderers, without self-control, fierce, without love of goodness, [4] betrayers, headstrong, puffed up with pride, lovers of pleasures rather than lovers of God, [5] having an appearance of godliness but proving false to its power; and from these turn away.",
+      "text": "But know this, that in the last days critical times hard to deal with will be here. For men will be lovers of themselves, lovers of money, boastful, haughty, blasphemers, disobedient to parents, unthankful, disloyal, having no natural affection, not open to any agreement, slanderers, without self-control, fierce, without love of goodness, betrayers, headstrong, puffed up with pride, lovers of pleasures rather than lovers of God, having an appearance of godliness but proving false to its power; and from these turn away.",
       "summary": "Current events and attitudes indicate a change is near.",
       "topic": "THE FUTURE",
       "truthId": 1
@@ -669,7 +669,7 @@ window.QUIZ_DATA = {
     },
     {
       "ref": "Isa. 35:1, 2",
-      "text": "The wilderness and the parched land will exult, And the desert plain will be joyful and blossom as the saffron. [2] Without fail it will blossom; It will rejoice and shout for joy. The glory of Lebʹa·non will be given to it, The splendor of Carʹmel and of Sharʹon. They will see the glory of Jehovah, the splendor of our God.",
+      "text": "The wilderness and the parched land will exult, And the desert plain will be joyful and blossom as the saffron. Without fail it will blossom; It will rejoice and shout for joy. The glory of Lebʹa·non will be given to it, The splendor of Carʹmel and of Sharʹon. They will see the glory of Jehovah, the splendor of our God.",
       "summary": "The earth’s environment will be restored.",
       "topic": "THE FUTURE",
       "truthId": 3
@@ -690,7 +690,7 @@ window.QUIZ_DATA = {
     },
     {
       "ref": "Isa. 35:5, 6",
-      "text": "At that time the eyes of the blind will be opened, And the ears of the deaf will be unstopped. [6] At that time the lame will leap like the deer, And the tongue of the speechless will shout for joy. For waters will burst forth in the wilderness, And streams in the desert plain.",
+      "text": "At that time the eyes of the blind will be opened, And the ears of the deaf will be unstopped. At that time the lame will leap like the deer, And the tongue of the speechless will shout for joy. For waters will burst forth in the wilderness, And streams in the desert plain.",
       "summary": "Everyone will have perfect health.",
       "topic": "THE FUTURE",
       "truthId": 4
@@ -746,7 +746,7 @@ window.QUIZ_DATA = {
     },
     {
       "ref": "Matt. 19:4-6",
-      "text": "In reply he said: “Have you not read that the one who created them from the beginning made them male and female [5] and said: ‘For this reason a man will leave his father and his mother and will stick to his wife, and the two will be one flesh’? [6] So that they are no longer two, but one flesh. Therefore, what God has yoked together, let no man put apart.”",
+      "text": "In reply he said: “Have you not read that the one who created them from the beginning made them male and female and said: ‘For this reason a man will leave his father and his mother and will stick to his wife, and the two will be one flesh’? So that they are no longer two, but one flesh. Therefore, what God has yoked together, let no man put apart.”",
       "summary": "A husband and a wife should be loyal to each other.",
       "topic": "FAMILY",
       "truthId": 8
@@ -767,14 +767,14 @@ window.QUIZ_DATA = {
     },
     {
       "ref": "Prov. 1:8, 9",
-      "text": "Listen, my son, to the discipline of your father, And do not forsake the instruction of your mother. [9] They are an attractive wreath for your head And a fine ornament for your neck.",
+      "text": "Listen, my son, to the discipline of your father, And do not forsake the instruction of your mother. They are an attractive wreath for your head And a fine ornament for your neck.",
       "summary": "Children who respect and obey their parents will succeed.",
       "topic": "FAMILY",
       "truthId": 9
     },
     {
       "ref": "Eph. 6:1-3",
-      "text": "Children, be obedient to your parents in union with the Lord, for this is righteous. [2] “Honor your father and your mother” is the first command with a promise: [3] “That it may go well with you and you may remain a long time on the earth.”",
+      "text": "Children, be obedient to your parents in union with the Lord, for this is righteous. “Honor your father and your mother” is the first command with a promise: “That it may go well with you and you may remain a long time on the earth.”",
       "summary": "Children who respect and obey their parents will succeed.",
       "topic": "FAMILY",
       "truthId": 9
@@ -795,14 +795,14 @@ window.QUIZ_DATA = {
     },
     {
       "ref": "2 Tim. 3:16, 17",
-      "text": "All Scripture is inspired of God and beneficial for teaching, for reproving, for setting things straight, for disciplining in righteousness, [17] so that the man of God may be fully competent, completely equipped for every good work.",
+      "text": "All Scripture is inspired of God and beneficial for teaching, for reproving, for setting things straight, for disciplining in righteousness, so that the man of God may be fully competent, completely equipped for every good work.",
       "summary": "God communicates with us.",
       "topic": "GOD",
       "truthId": 11
     },
     {
       "ref": "2 Pet. 1:20, 21",
-      "text": "For you know this first, that no prophecy of Scripture springs from any private interpretation. [21] For prophecy was at no time brought by man’s will, but men spoke from God as they were moved by holy spirit.",
+      "text": "For you know this first, that no prophecy of Scripture springs from any private interpretation. For prophecy was at no time brought by man’s will, but men spoke from God as they were moved by holy spirit.",
       "summary": "God communicates with us.",
       "topic": "GOD",
       "truthId": 11
@@ -816,7 +816,7 @@ window.QUIZ_DATA = {
     },
     {
       "ref": "Acts 10:34, 35",
-      "text": "At this Peter began to speak, and he said: “Now I truly understand that God is not partial, [35] but in every nation the man who fears him and does what is right is acceptable to him.",
+      "text": "At this Peter began to speak, and he said: “Now I truly understand that God is not partial, but in every nation the man who fears him and does what is right is acceptable to him.",
       "summary": "God is fair and unbiased.",
       "topic": "GOD",
       "truthId": 12
@@ -830,7 +830,7 @@ window.QUIZ_DATA = {
     },
     {
       "ref": "Ps. 145:18, 19",
-      "text": "Jehovah is near to all those calling on him, To all who call on him in truth. [19] He satisfies the desire of those who fear him; He hears their cry for help, and he rescues them.",
+      "text": "Jehovah is near to all those calling on him, To all who call on him in truth. He satisfies the desire of those who fear him; He hears their cry for help, and he rescues them.",
       "summary": "God wants to help us.",
       "topic": "GOD",
       "truthId": 13
@@ -858,21 +858,21 @@ window.QUIZ_DATA = {
     },
     {
       "ref": "Matt. 6:7-13",
-      "text": "When praying, do not say the same things over and over again as the people of the nations do, for they imagine they will get a hearing for their use of many words. [8] So do not be like them, for your Father knows what you need even before you ask him. [9] “You must pray, then, this way: “‘Our Father in the heavens, let your name be sanctified. [10] Let your Kingdom come. Let your will take place, as in heaven, also on earth. [11] Give us today our bread for this day; [12] and forgive us our debts, as we also have forgiven our debtors. [13] And do not bring us into temptation, but deliver us from the wicked one.’",
+      "text": "When praying, do not say the same things over and over again as the people of the nations do, for they imagine they will get a hearing for their use of many words. So do not be like them, for your Father knows what you need even before you ask him. “You must pray, then, this way: “‘Our Father in the heavens, let your name be sanctified. Let your Kingdom come. Let your will take place, as in heaven, also on earth. Give us today our bread for this day; and forgive us our debts, as we also have forgiven our debtors. And do not bring us into temptation, but deliver us from the wicked one.’",
       "summary": "The Bible teaches us how to pray.",
       "topic": "PRAYER",
       "truthId": 15
     },
     {
       "ref": "Luke 11:1-4",
-      "text": "Now he was in a certain place praying, and when he stopped, one of his disciples said to him: “Lord, teach us how to pray, just as John also taught his disciples.” [2] So he said to them: “Whenever you pray, say: ‘Father, let your name be sanctified. Let your Kingdom come. [3] Give us each day our bread according to our daily needs. [4] And forgive us our sins, for we ourselves also forgive everyone who is in debt to us; and do not bring us into temptation.’”",
+      "text": "Now he was in a certain place praying, and when he stopped, one of his disciples said to him: “Lord, teach us how to pray, just as John also taught his disciples.” So he said to them: “Whenever you pray, say: ‘Father, let your name be sanctified. Let your Kingdom come. Give us each day our bread according to our daily needs. And forgive us our sins, for we ourselves also forgive everyone who is in debt to us; and do not bring us into temptation.’”",
       "summary": "The Bible teaches us how to pray.",
       "topic": "PRAYER",
       "truthId": 15
     },
     {
       "ref": "Matt. 7:7, 8",
-      "text": "“Keep on asking, and it will be given you; keep on seeking, and you will find; keep on knocking, and it will be opened to you; [8] for everyone asking receives, and everyone seeking finds, and to everyone knocking, it will be opened.",
+      "text": "“Keep on asking, and it will be given you; keep on seeking, and you will find; keep on knocking, and it will be opened to you; for everyone asking receives, and everyone seeking finds, and to everyone knocking, it will be opened.",
       "summary": "We should pray often.",
       "topic": "PRAYER",
       "truthId": 16
@@ -886,7 +886,7 @@ window.QUIZ_DATA = {
     },
     {
       "ref": "Matt. 6:14, 15",
-      "text": "“For if you forgive men their trespasses, your heavenly Father will also forgive you; [15] whereas if you do not forgive men their trespasses, neither will your Father forgive your trespasses.",
+      "text": "“For if you forgive men their trespasses, your heavenly Father will also forgive you; whereas if you do not forgive men their trespasses, neither will your Father forgive your trespasses.",
       "summary": "Jesus was a great teacher whose advice always works.",
       "topic": "JESUS",
       "truthId": 17
@@ -914,7 +914,7 @@ window.QUIZ_DATA = {
     },
     {
       "ref": "Matt. 24:7, 8",
-      "text": "“For nation will rise against nation and kingdom against kingdom, and there will be food shortages and earthquakes in one place after another. [8] All these things are a beginning of pangs of distress.",
+      "text": "“For nation will rise against nation and kingdom against kingdom, and there will be food shortages and earthquakes in one place after another. All these things are a beginning of pangs of distress.",
       "summary": "Jesus foretold events we see today.",
       "topic": "JESUS",
       "truthId": 18
@@ -928,7 +928,7 @@ window.QUIZ_DATA = {
     },
     {
       "ref": "Luke 21:10, 11",
-      "text": "Then he said to them: “Nation will rise against nation, and kingdom against kingdom. [11] There will be great earthquakes, and in one place after another food shortages and pestilences; and there will be fearful sights and from heaven great signs.",
+      "text": "Then he said to them: “Nation will rise against nation, and kingdom against kingdom. There will be great earthquakes, and in one place after another food shortages and pestilences; and there will be fearful sights and from heaven great signs.",
       "summary": "Jesus foretold events we see today.",
       "topic": "JESUS",
       "truthId": 18
@@ -977,14 +977,14 @@ window.QUIZ_DATA = {
     },
     {
       "ref": "Dan. 7:13, 14",
-      "text": "“I kept watching in the visions of the night, and look! with the clouds of the heavens, someone like a son of man was coming; and he gained access to the Ancient of Days, and they brought him up close before that One. [14] And to him there were given rulership, honor, and a kingdom, that the peoples, nations, and language groups should all serve him. His rulership is an everlasting rulership that will not pass away, and his kingdom will not be destroyed.",
+      "text": "“I kept watching in the visions of the night, and look! with the clouds of the heavens, someone like a son of man was coming; and he gained access to the Ancient of Days, and they brought him up close before that One. And to him there were given rulership, honor, and a kingdom, that the peoples, nations, and language groups should all serve him. His rulership is an everlasting rulership that will not pass away, and his kingdom will not be destroyed.",
       "summary": "God’s Kingdom is a real government in heaven.",
       "topic": "GOD’S KINGDOM",
       "truthId": 21
     },
     {
       "ref": "Matt. 6:9, 10",
-      "text": "“You must pray, then, this way: “‘Our Father in the heavens, let your name be sanctified. [10] Let your Kingdom come. Let your will take place, as in heaven, also on earth.",
+      "text": "“You must pray, then, this way: “‘Our Father in the heavens, let your name be sanctified. Let your Kingdom come. Let your will take place, as in heaven, also on earth.",
       "summary": "God’s Kingdom is a real government in heaven.",
       "topic": "GOD’S KINGDOM",
       "truthId": 21
@@ -998,7 +998,7 @@ window.QUIZ_DATA = {
     },
     {
       "ref": "Ps. 2:7-9",
-      "text": "Let me proclaim the decree of Jehovah; He said to me: “You are my son; Today I have become your father. [8] Ask of me, and I will give nations as your inheritance And the ends of the earth as your possession. [9] You will break them with an iron scepter, And you will smash them like a piece of pottery.”",
+      "text": "Let me proclaim the decree of Jehovah; He said to me: “You are my son; Today I have become your father. Ask of me, and I will give nations as your inheritance And the ends of the earth as your possession. You will break them with an iron scepter, And you will smash them like a piece of pottery.”",
       "summary": "God’s Kingdom will replace human governments.",
       "topic": "GOD’S KINGDOM",
       "truthId": 22
@@ -1012,7 +1012,7 @@ window.QUIZ_DATA = {
     },
     {
       "ref": "Ps. 37:10, 11",
-      "text": "Just a little while longer, and the wicked will be no more; You will look at where they were, And they will not be there. [11] But the meek will possess the earth, And they will find exquisite delight in the abundance of peace.",
+      "text": "Just a little while longer, and the wicked will be no more; You will look at where they were, And they will not be there. But the meek will possess the earth, And they will find exquisite delight in the abundance of peace.",
       "summary": "God’s Kingdom is the only solution to mankind’s problems.",
       "topic": "GOD’S KINGDOM",
       "truthId": 23
@@ -1026,7 +1026,7 @@ window.QUIZ_DATA = {
     },
     {
       "ref": "Isa. 65:21-23",
-      "text": "They will build houses and live in them, And they will plant vineyards and eat their fruitage. [22] They will not build for someone else to inhabit, Nor will they plant for others to eat. For the days of my people will be like the days of a tree, And the work of their hands my chosen ones will enjoy to the full. [23] They will not toil for nothing, Nor will they bear children for distress, Because they are the offspring made up of those blessed by Jehovah, And their descendants with them.",
+      "text": "They will build houses and live in them, And they will plant vineyards and eat their fruitage. They will not build for someone else to inhabit, Nor will they plant for others to eat. For the days of my people will be like the days of a tree, And the work of their hands my chosen ones will enjoy to the full. They will not toil for nothing, Nor will they bear children for distress, Because they are the offspring made up of those blessed by Jehovah, And their descendants with them.",
       "summary": "God’s Kingdom is the only solution to mankind’s problems.",
       "topic": "GOD’S KINGDOM",
       "truthId": 23
@@ -1047,7 +1047,7 @@ window.QUIZ_DATA = {
     },
     {
       "ref": "Luke 4:5, 6",
-      "text": "So he brought him up and showed him all the kingdoms of the inhabited earth in an instant of time. [6] Then the Devil said to him: “I will give you all this authority and their glory, because it has been handed over to me, and I give it to whomever I wish.",
+      "text": "So he brought him up and showed him all the kingdoms of the inhabited earth in an instant of time. Then the Devil said to him: “I will give you all this authority and their glory, because it has been handed over to me, and I give it to whomever I wish.",
       "summary": "Satan rules this world.",
       "topic": "SUFFERING",
       "truthId": 25
@@ -1061,7 +1061,7 @@ window.QUIZ_DATA = {
     },
     {
       "ref": "Ps. 34:17-19",
-      "text": "They cried out, and Jehovah heard; He rescued them from all their distresses. [18] Jehovah is close to the brokenhearted; He saves those who are crushed in spirit. [19] Many are the hardships of the righteous one, But Jehovah rescues him from them all.",
+      "text": "They cried out, and Jehovah heard; He rescued them from all their distresses. Jehovah is close to the brokenhearted; He saves those who are crushed in spirit. Many are the hardships of the righteous one, But Jehovah rescues him from them all.",
       "summary": "God cares about your suffering.",
       "topic": "SUFFERING",
       "truthId": 26
@@ -1089,7 +1089,7 @@ window.QUIZ_DATA = {
     },
     {
       "ref": "Rev. 21:3, 4",
-      "text": "With that I heard a loud voice from the throne say: “Look! The tent of God is with mankind, and he will reside with them, and they will be his people. And God himself will be with them. [4] And he will wipe out every tear from their eyes, and death will be no more, neither will mourning nor outcry nor pain be anymore. The former things have passed away.”",
+      "text": "With that I heard a loud voice from the throne say: “Look! The tent of God is with mankind, and he will reside with them, and they will be his people. And God himself will be with them. And he will wipe out every tear from their eyes, and death will be no more, neither will mourning nor outcry nor pain be anymore. The former things have passed away.”",
       "summary": "God will soon end suffering.",
       "topic": "SUFFERING",
       "truthId": 27
@@ -1103,7 +1103,7 @@ window.QUIZ_DATA = {
     },
     {
       "ref": "John 11:11-14",
-      "text": "After he said these things, he added: “Lazʹa·rus our friend has fallen asleep, but I am traveling there to awaken him.” [12] The disciples then said to him: “Lord, if he is sleeping, he will get well.” [13] Jesus, however, had spoken about his death. But they imagined he was speaking about taking rest in sleep. [14] Then Jesus said to them plainly: “Lazʹa·rus has died,",
+      "text": "After he said these things, he added: “Lazʹa·rus our friend has fallen asleep, but I am traveling there to awaken him.” The disciples then said to him: “Lord, if he is sleeping, he will get well.” Jesus, however, had spoken about his death. But they imagined he was speaking about taking rest in sleep. Then Jesus said to them plainly: “Lazʹa·rus has died,",
       "summary": "The dead are unconscious; they are not suffering.",
       "topic": "DEATH",
       "truthId": 28
@@ -1131,14 +1131,14 @@ window.QUIZ_DATA = {
     },
     {
       "ref": "Job 14:13-15",
-      "text": "O that in the Grave you would conceal me, That you would hide me until your anger passes by, That you would set a time limit for me and remember me! [14] If a man dies, can he live again? I will wait all the days of my compulsory service Until my relief comes. [15] You will call, and I will answer you. You will long for the work of your hands.",
+      "text": "O that in the Grave you would conceal me, That you would hide me until your anger passes by, That you would set a time limit for me and remember me! If a man dies, can he live again? I will wait all the days of my compulsory service Until my relief comes. You will call, and I will answer you. You will long for the work of your hands.",
       "summary": "Dead loved ones will be resurrected.",
       "topic": "DEATH",
       "truthId": 30
     },
     {
       "ref": "John 5:28, 29",
-      "text": "Do not be amazed at this, for the hour is coming in which all those in the memorial tombs will hear his voice [29] and come out, those who did good things to a resurrection of life, and those who practiced vile things to a resurrection of judgment.",
+      "text": "Do not be amazed at this, for the hour is coming in which all those in the memorial tombs will hear his voice and come out, those who did good things to a resurrection of life, and those who practiced vile things to a resurrection of judgment.",
       "summary": "Dead loved ones will be resurrected.",
       "topic": "DEATH",
       "truthId": 30
@@ -1152,7 +1152,7 @@ window.QUIZ_DATA = {
     },
     {
       "ref": "Rev. 21:3, 4",
-      "text": "With that I heard a loud voice from the throne say: “Look! The tent of God is with mankind, and he will reside with them, and they will be his people. And God himself will be with them. [4] And he will wipe out every tear from their eyes, and death will be no more, neither will mourning nor outcry nor pain be anymore. The former things have passed away.”",
+      "text": "With that I heard a loud voice from the throne say: “Look! The tent of God is with mankind, and he will reside with them, and they will be his people. And God himself will be with them. And he will wipe out every tear from their eyes, and death will be no more, neither will mourning nor outcry nor pain be anymore. The former things have passed away.”",
       "summary": "“Death will be no more.”",
       "topic": "DEATH",
       "truthId": 31
@@ -1173,14 +1173,14 @@ window.QUIZ_DATA = {
     },
     {
       "ref": "Matt. 7:13, 14",
-      "text": "“Go in through the narrow gate, because broad is the gate and spacious is the road leading off into destruction, and many are going in through it; [14] whereas narrow is the gate and cramped the road leading off into life, and few are finding it.",
+      "text": "“Go in through the narrow gate, because broad is the gate and spacious is the road leading off into destruction, and many are going in through it; whereas narrow is the gate and cramped the road leading off into life, and few are finding it.",
       "summary": "Not all religions please God.",
       "topic": "RELIGION",
       "truthId": 32
     },
     {
       "ref": "Matt. 7:21-23",
-      "text": "“Not everyone saying to me, ‘Lord, Lord,’ will enter into the Kingdom of the heavens, but only the one doing the will of my Father who is in the heavens will. [22] Many will say to me in that day: ‘Lord, Lord, did we not prophesy in your name, and expel demons in your name, and perform many powerful works in your name?’ [23] And then I will declare to them: ‘I never knew you! Get away from me, you workers of lawlessness!’",
+      "text": "“Not everyone saying to me, ‘Lord, Lord,’ will enter into the Kingdom of the heavens, but only the one doing the will of my Father who is in the heavens will. Many will say to me in that day: ‘Lord, Lord, did we not prophesy in your name, and expel demons in your name, and perform many powerful works in your name?’ And then I will declare to them: ‘I never knew you! Get away from me, you workers of lawlessness!’",
       "summary": "Not all religions please God.",
       "topic": "RELIGION",
       "truthId": 32
@@ -1201,7 +1201,7 @@ window.QUIZ_DATA = {
     },
     {
       "ref": "Mark 7:6-8",
-      "text": "He said to them: “Isaiah aptly prophesied about you hypocrites, as it is written, ‘This people honor me with their lips, but their hearts are far removed from me. [7] It is in vain that they keep worshipping me, for they teach commands of men as doctrines.’ [8] You let go of the commandment of God and cling to the tradition of men.”",
+      "text": "He said to them: “Isaiah aptly prophesied about you hypocrites, as it is written, ‘This people honor me with their lips, but their hearts are far removed from me. It is in vain that they keep worshipping me, for they teach commands of men as doctrines.’ You let go of the commandment of God and cling to the tradition of men.”",
       "summary": "God hates hypocrisy.",
       "topic": "RELIGION",
       "truthId": 33
@@ -1215,7 +1215,7 @@ window.QUIZ_DATA = {
     },
     {
       "ref": "John 13:34, 35",
-      "text": "I am giving you a new commandment, that you love one another; just as I have loved you, you also love one another. [35] By this all will know that you are my disciples—if you have love among yourselves.”",
+      "text": "I am giving you a new commandment, that you love one another; just as I have loved you, you also love one another. By this all will know that you are my disciples—if you have love among yourselves.”",
       "summary": "Genuine love identifies true religion.",
       "topic": "RELIGION",
       "truthId": 34
