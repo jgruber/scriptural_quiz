@@ -1,17 +1,27 @@
 #!/usr/bin/env python3
-"""Extract the Polish "Truths We Love to Teach" (Appendix A) from wol.jw.org.
+"""Extract "Truths We Love to Teach" (Appendix A) from wol.jw.org.
 
-Polish has no Study-Edition EPUB, so we scrape the same appendix document
-(id 1102023316) from the Watchtower ONLINE Library: topics + truths + scripture
-references come from the appendix page, and each scripture's full NWT text comes
-from WOL's bible-citation (bc) endpoint. No translation — authentic jw.org data.
+Some languages have no Study-Edition EPUB (e.g. Polish, Brazilian Portuguese),
+so we scrape the same appendix document (id 1102023316) from the Watchtower
+ONLINE Library: topics + truths + scripture references come from the appendix
+page, and each scripture's full NWT text comes from WOL's bible-citation (bc)
+endpoint. No translation — authentic jw.org data.
+
+Usage: parse_lmd_wol.py [wtlang rsconf lib]
+  Defaults to Polish (pl r12 lp-p). Brazilian Portuguese is: pt r5 lp-t.
+  Discover the triple for a language with WOL's finder, e.g.:
+    curl -sLo /dev/null -w '%{url_effective}\\n' \\
+      'https://wol.jw.org/wol/finder?wtlocale=T&docid=1102023316&srctype=wol'
 """
 import re, sys, json, time, subprocess, html as htmllib
 
 DOCID = "1102023316"
-APPENDIX_URL = f"https://wol.jw.org/pl/wol/d/r12/lp-p/{DOCID}"
-BC_URL = "https://wol.jw.org/wol/bc/r12/lp-p/" + DOCID + "/{}/{}"
-UA = {"User-Agent": "Mozilla/5.0"}
+WTLANG = sys.argv[1] if len(sys.argv) > 1 else "pl"
+RSCONF = sys.argv[2] if len(sys.argv) > 2 else "r12"
+LIB    = sys.argv[3] if len(sys.argv) > 3 else "lp-p"
+APPENDIX_URL = f"https://wol.jw.org/{WTLANG}/wol/d/{RSCONF}/{LIB}/{DOCID}"
+BC_URL = f"https://wol.jw.org/wol/bc/{RSCONF}/{LIB}/{DOCID}/{{}}/{{}}"
+BC_LINK_RE = re.compile(rf'/{WTLANG}/wol/bc/{RSCONF}/{LIB}/{DOCID}/(\d+)/(\d+)')
 
 def get(url):
     last = None
@@ -47,7 +57,7 @@ def main():
     # bc endpoint cache (persisted so reruns resume): "g/i" -> raw {title, content}.
     # We cache the RAW payload and clean at use, so fixing clean() needs no refetch.
     import os
-    CACHE_FILE = "/tmp/wol_bc_raw.json"
+    CACHE_FILE = f"/tmp/wol_bc_raw_{WTLANG}_{LIB}.json"
     cache = json.load(open(CACHE_FILE)) if os.path.exists(CACHE_FILE) else {}
     def fetch_bc(g, i):
         key = f"{g}/{i}"
@@ -82,7 +92,7 @@ def main():
             summary = clean(cut)
             summary = re.sub(r'^\d+\.\s*', '', summary)
             summary = re.sub(r'[\s—–(]+$', '', summary).strip()
-            paths = re.findall(r'/pl/wol/bc/r12/lp-p/' + DOCID + r'/(\d+)/(\d+)', li)
+            paths = BC_LINK_RE.findall(li)
             tid += 1
             scr = []
             for g, i in paths:

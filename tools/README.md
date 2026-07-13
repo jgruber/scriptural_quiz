@@ -18,6 +18,7 @@ appendix (document id `1102023316`).
 | Italian | `I` | Study-Edition EPUB |
 | Portuguese (Portugal) | `TPO` | Study-Edition EPUB |
 | Polish | `P` | Watchtower Online Library (no Polish EPUB is published) |
+| Portuguese (Brazil) | `T` | Watchtower Online Library (no Brazilian EPUB is published) |
 
 The Study-Edition EPUB is ideal because its Appendix A embeds the full New World
 Translation verse text in `extScrpCite` footnotes — everything needed is in one
@@ -37,8 +38,11 @@ curl -L -o lmd_E.epub "<url for E>"      # repeat for S, X, I, TPO
 # 2. Extract each EPUB to lmd_<code>.json (validates 9 topics / 34 truths / 85 scriptures):
 for L in E S X I TPO; do python3 ../parse_lmd.py lmd_$L.epub > lmd_$L.json; done
 
-# 3. Extract Polish from WOL (fetches 85 verse citations; cached to wol_bc_raw.json):
-python3 ../parse_lmd_wol.py > lmd_P.json
+# 3. Extract the WOL-sourced languages (fetches 85 verse citations each).
+#    Args are: wtlang rsconf lib — discover them with WOL's finder (see the
+#    script header). Defaults are Polish.
+python3 ../parse_lmd_wol.py pl r12 lp-p > lmd_P.json   # Polish
+python3 ../parse_lmd_wol.py pt r5  lp-t > lmd_T.json   # Brazilian Portuguese
 
 # 4. Combine into ../data.js:
 python3 ../build_data.py .

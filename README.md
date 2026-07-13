@@ -5,12 +5,14 @@ in the **"Truths We Love to Teach"** section (Appendix A) of *Love People—Make
 Disciples*. All scriptural text is quoted from the **New World Translation of the
 Holy Scriptures (Study Edition)**.
 
-The app is available in **six languages** — English, Spanish, German, Polish,
-Italian, and Portuguese. The interface language defaults to the browser's
-preference and can be changed at any time from the selector on the home screen.
-None of the content is machine-translated: every topic, truth, and verse is taken
-verbatim from the corresponding jw.org publication in that language (see
-[Data source](#data-source)).
+The app is available in **seven languages** — English, Spanish, German, Polish,
+Italian, Brazilian Portuguese, and European Portuguese. The interface language
+defaults to the browser's preference and can be switched at any time — even
+mid-game — from the 🌐 selector shown at the top of every screen; switching
+during a game rebuilds the remaining questions in the new language while keeping
+scores and turn order. None of the content is machine-translated: every topic,
+truth, and verse is taken verbatim from the corresponding jw.org publication in
+that language (see [Data source](#data-source)).
 
 It's a single-page app — pure HTML, Tailwind CSS, and vanilla JavaScript, with no
 build step and no backend. It runs entirely in the browser and can be hosted as a
@@ -104,12 +106,12 @@ Translation (Study Edition) text — the same structure in every language.
 
 | Language | Source |
 |----------|--------|
-| English, Spanish, German, Italian, Portuguese | The Study-Edition **EPUB** for each language (its Appendix A embeds the verse text in footnotes) |
-| Polish | The **Watchtower Online Library** (`wol.jw.org`), since no Study-Edition EPUB is published in Polish — the appendix supplies topics/truths/references and each verse is read from WOL's bible-citation endpoint |
+| English, Spanish, German, Italian, European Portuguese | The Study-Edition **EPUB** for each language (its Appendix A embeds the verse text in footnotes) |
+| Polish, Brazilian Portuguese | The **Watchtower Online Library** (`wol.jw.org`), since no Study-Edition EPUB is published in these — the appendix supplies topics/truths/references and each verse is read from WOL's bible-citation endpoint |
 
 Nothing is translated by the app; every string of scriptural content is the
-official jw.org wording for that language. Portuguese uses the European
-Portuguese (Portugal) edition.
+official jw.org wording for that language. Both Portuguese editions are
+included: Brazilian (`pt-BR`) and European/Portugal (`pt-PT`).
 
 Topics (English): The Future · Family · God · Prayer · Jesus · God's Kingdom ·
 Suffering · Death · Religion.

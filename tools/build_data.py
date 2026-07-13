@@ -10,12 +10,13 @@ WORKDIR = sys.argv[1] if len(sys.argv) > 1 else "."
 OUT = os.path.join(os.path.dirname(__file__), "..", "data.js")
 
 LANGS = [
-    ("en", "lmd_E.json",   "Truths We Love to Teach"),
-    ("es", "lmd_S.json",   "Verdades bíblicas que nos encanta enseñar"),
-    ("de", "lmd_X.json",   "Wahrheiten, über die wir gern sprechen"),
-    ("pl", "lmd_P.json",   "Prawdy, o których lubimy rozmawiać"),
-    ("it", "lmd_I.json",   "Verità bibliche che desideriamo insegnare"),
-    ("pt", "lmd_TPO.json", "Verdades que gostamos muito de ensinar"),
+    ("en",    "lmd_E.json",   "Truths We Love to Teach"),
+    ("es",    "lmd_S.json",   "Verdades bíblicas que nos encanta enseñar"),
+    ("de",    "lmd_X.json",   "Wahrheiten, über die wir gern sprechen"),
+    ("pl",    "lmd_P.json",   "Prawdy, o których lubimy rozmawiać"),
+    ("it",    "lmd_I.json",   "Verità bibliche che desideriamo insegnare"),
+    ("pt-BR", "lmd_T.json",   "Verdades que amamos ensinar"),
+    ("pt-PT", "lmd_TPO.json", "Verdades que gostamos muito de ensinar"),
 ]
 
 out = {}

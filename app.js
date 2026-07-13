@@ -15,6 +15,20 @@
   const LANGS = window.QUIZ_LANGS;
   const LANG_CODES = LANGS.map((l) => l.code);
   const LS_LANG = "sq_lang";
+  // For a bare base subtag (e.g. "pt" with no region), which full code to use.
+  const BASE_DEFAULT = { pt: "pt-BR" };
+
+  // Match one browser language tag (e.g. "pt-BR", "de") to one of our codes.
+  function matchLang(pref) {
+    const p = String(pref).toLowerCase();
+    const exact = LANG_CODES.find((c) => c.toLowerCase() === p);
+    if (exact) return exact;
+    const base = p.split("-")[0];
+    if (BASE_DEFAULT[base] && LANG_CODES.includes(BASE_DEFAULT[base])) return BASE_DEFAULT[base];
+    return LANG_CODES.find((c) => c.toLowerCase() === base)
+      || LANG_CODES.find((c) => c.toLowerCase().split("-")[0] === base)
+      || null;
+  }
 
   // Preference order: saved choice -> browser languages -> English.
   function detectLang() {
@@ -25,8 +39,8 @@
     const prefs = (navigator.languages && navigator.languages.length)
       ? navigator.languages : [navigator.language || "en"];
     for (const p of prefs) {
-      const base = String(p).toLowerCase().split("-")[0];
-      if (LANG_CODES.includes(base)) return base;
+      const m = matchLang(p);
+      if (m) return m;
     }
     return "en";
   }
@@ -37,6 +51,9 @@
   let t = window.QUIZ_I18N[lang];
   document.documentElement.lang = lang;
 
+  // Which screen is showing, so a language switch knows how to re-render.
+  let screen = "home";
+
   function setLang(code) {
     if (!LANG_CODES.includes(code)) return;
     lang = code;
@@ -46,6 +63,45 @@
     recomputePools();
     updateChrome();
     try { localStorage.setItem(LS_LANG, lang); } catch (e) { /* ignore */ }
+  }
+
+  // Persistent language selector (lives in #topbar, outside #app, so it stays
+  // visible on every screen). Wired once at boot; re-rendered to reflect the
+  // active language. Switching re-renders the current screen in the new
+  // language — and, mid-game, rebuilds the remaining questions so the scripture
+  // text and options stay consistent while scores and turn order are kept.
+  function renderTopbar() {
+    const bar = document.getElementById("topbar");
+    if (!bar) return;
+    bar.innerHTML = `
+      <label class="sr-only" for="langSel">${escapeHtml(t.languageLabel)}</label>
+      <span aria-hidden="true" class="text-slate-400">🌐</span>
+      <select id="langSel" aria-label="${escapeHtml(t.languageLabel)}"
+              class="rounded-lg border border-slate-200 bg-white px-2.5 py-1.5 text-xs font-medium text-slate-600 shadow-sm focus:border-indigo-400 focus:outline-none">
+        ${LANGS.map((l) => `<option value="${l.code}" ${l.code === lang ? "selected" : ""}>${escapeHtml(l.name)}</option>`).join("")}
+      </select>`;
+    bar.querySelector("#langSel").addEventListener("change", (e) => switchLang(e.target.value));
+  }
+
+  function switchLang(code) {
+    if (code === lang || !LANG_CODES.includes(code)) return;
+    setLang(code);           // also refreshes the footer/title via updateChrome
+    renderTopbar();          // reflect the new selection
+    if (game && (screen === "intro" || screen === "question")) {
+      // Continue the same game. A turn that's already been answered keeps its
+      // score; rebuild the remaining (unplayed) turns in the new language and
+      // resume at the next one to play.
+      const nextTurn = game.turn + (game.selected != null ? 1 : 0);
+      regenerateScheduleFrom(nextTurn);
+      game.turn = nextTurn;
+      game.selected = null;
+      if (game.turn >= game.schedule.length) viewResults();
+      else viewTurnIntro();
+    } else if (game && screen === "results") {
+      viewResults();
+    } else {
+      viewHome();
+    }
   }
 
   // Fill {placeholders} in a catalog string.
@@ -191,8 +247,17 @@
     return { type, scripture, options, correctIndex: options.indexOf(correct) };
   }
 
-  // Round-robin schedule honoring the enabled question types and topic filter.
-  function generateSchedule(players, perPlayer, filtered, types) {
+  // Scriptures for the active language limited to the selected topics. Topics
+  // are stored as indices (0-8) so the filter survives a language switch — the
+  // topics are in the same order in every language.
+  function filteredScriptures(topicIndices) {
+    return DATA.scriptures.filter((s) => topicIndices.includes(DATA.topics.indexOf(s.topic)));
+  }
+
+  // Fill schedule slots [startTurn, total) with fresh round-robin questions in
+  // the active language. Slot t always belongs to player t % players.length, so
+  // regenerating a tail keeps whose-turn intact. Mutates and returns `schedule`.
+  function fillSchedule(schedule, startTurn, players, perPlayer, filtered, types) {
     const pools = {
       ref: uniq(filtered.map((s) => s.ref)),
       summary: uniq(filtered.map((s) => s.summary)),
@@ -204,14 +269,11 @@
       if (bag.length === 0) bag = shuffle(filtered);
       return bag.pop();
     };
-    // Each question picks a random kind from the enabled types.
-    const pool = types && types.length ? types : QTYPE_KEYS;
-    const schedule = [];
-    for (let round = 0; round < perPlayer; round++) {
-      for (let p = 0; p < players.length; p++) {
-        const type = pool[Math.floor(Math.random() * pool.length)];
-        schedule.push({ playerIndex: p, question: buildQuestion(draw(), type, pools) });
-      }
+    const typePool = types && types.length ? types : QTYPE_KEYS;
+    const total = players.length * perPlayer;
+    for (let i = startTurn; i < total; i++) {
+      const type = typePool[Math.floor(Math.random() * typePool.length)];
+      schedule[i] = { playerIndex: i % players.length, question: buildQuestion(draw(), type, pools) };
     }
     return schedule;
   }
@@ -224,17 +286,24 @@
     if (tickHandle) { clearInterval(tickHandle); tickHandle = null; }
   }
 
-  function newGame(players, perPlayer, topics, timerSec, types) {
-    const filtered = DATA.scriptures.filter((s) => topics.includes(s.topic));
+  function newGame(players, perPlayer, topicIndices, timerSec, types) {
+    const filtered = filteredScriptures(topicIndices);
     const pls = players.map((p) => ({
       name: p.name,
       score: 0, correct: 0, answered: 0, streak: 0, bestStreak: 0,
     }));
     game = {
-      players: pls, perPlayer, timerSec, topics, types,
-      schedule: generateSchedule(pls, perPlayer, filtered, types),
-      turn: 0, selected: null, deadline: null,
+      players: pls, perPlayer, timerSec, topicIndices, types,
+      schedule: fillSchedule(new Array(pls.length * perPlayer), 0, pls, perPlayer, filtered, types),
+      turn: 0, selected: null, deadline: null, recorded: false,
     };
+  }
+
+  // Rebuild the current + upcoming questions in the active language after a
+  // language switch, preserving scores and whose-turn.
+  function regenerateScheduleFrom(startTurn) {
+    fillSchedule(game.schedule, startTurn, game.players, game.perPlayer,
+      filteredScriptures(game.topicIndices), game.types);
   }
 
   // =========================================================
@@ -251,6 +320,7 @@
 
   // ---- Home / setup ----
   function viewHome() {
+    screen = "home";
     const savedPlayers = load(LS_PLAYERS, null);
     let players = Array.isArray(savedPlayers) && savedPlayers.length
       ? savedPlayers.map((p) => ({ name: typeof p === "string" ? p : p.name }))
@@ -259,8 +329,11 @@
     const settings = load(LS_SETTINGS, {});
     let perPlayer = settings.perPlayer || 8;
     let timerSec = TIMER_OPTIONS.some((o) => o.sec === settings.timerSec) ? settings.timerSec : 20;
+    // Selected topics persist as language-independent indices; map to the active
+    // language's topic strings for display (and fall back to all).
     let selTopics = Array.isArray(settings.topics) && settings.topics.length
-      ? DATA.topics.filter((t) => settings.topics.includes(t))
+        && settings.topics.every((x) => typeof x === "number")
+      ? settings.topics.map((i) => DATA.topics[i]).filter(Boolean)
       : DATA.topics.slice();
     if (selTopics.length === 0) selTopics = DATA.topics.slice();
     let selTypes = Array.isArray(settings.types) && settings.types.length
@@ -271,13 +344,7 @@
     function draw() {
       const history = load(LS_HISTORY, []);
       render(`
-        <div class="flex justify-end pt-2">
-          <label class="sr-only" for="langSel">${escapeHtml(t.languageLabel)}</label>
-          <select id="langSel" aria-label="${escapeHtml(t.languageLabel)}" class="rounded-lg border border-slate-200 bg-white px-2.5 py-1.5 text-xs font-medium text-slate-600 shadow-sm focus:border-indigo-400 focus:outline-none">
-            ${LANGS.map((l) => `<option value="${l.code}" ${l.code === lang ? "selected" : ""}>${escapeHtml(l.name)}</option>`).join("")}
-          </select>
-        </div>
-        <header class="pt-2 pb-4 text-center">
+        <header class="pt-4 pb-4 text-center">
           <div class="text-5xl">📖</div>
           <h1 class="mt-3 text-2xl font-bold text-slate-900">${escapeHtml(t.appName)}</h1>
           <p class="mt-1 text-sm text-slate-500">${escapeHtml(DATA.appendixTitle)} &middot; ${escapeHtml(t.appendixLabel)}</p>
@@ -348,11 +415,6 @@
         ${history.length ? recentGames(history) : ""}
       `);
 
-      app.querySelector("#langSel").addEventListener("change", (e) => {
-        setLang(e.target.value);
-        viewHome();
-      });
-
       // player name + remove
       app.querySelectorAll(".player-name").forEach((inp) => {
         inp.addEventListener("input", (e) => { players[+e.target.dataset.i].name = e.target.value; });
@@ -414,9 +476,11 @@
         if (selTypes.length === 0) { app.querySelector("#typeWarn").classList.remove("hidden"); return; }
         // keep the enabled types in the canonical display order
         const types = QTYPE_KEYS.filter((k) => selTypes.includes(k));
+        // Persist and play using language-independent topic indices.
+        const topicIndices = selTopics.map((tp) => DATA.topics.indexOf(tp)).filter((i) => i >= 0);
         save(LS_PLAYERS, clean);
-        save(LS_SETTINGS, { perPlayer, timerSec, topics: selTopics, types });
-        newGame(clean, perPlayer, selTopics, timerSec, types);
+        save(LS_SETTINGS, { perPlayer, timerSec, topics: topicIndices, types });
+        newGame(clean, perPlayer, topicIndices, timerSec, types);
         viewTurnIntro();
       });
       const clearBtn = app.querySelector("#clearHistory");
@@ -492,6 +556,7 @@
 
   // ---- Turn intro (pass the device) ----
   function viewTurnIntro() {
+    screen = "intro";
     const { playerIndex } = game.schedule[game.turn];
     const player = game.players[playerIndex];
     const round = Math.floor(game.turn / game.players.length) + 1;
@@ -516,6 +581,7 @@
 
   // ---- Question ----
   function viewQuestion() {
+    screen = "question";
     const entry = game.schedule[game.turn];
     const player = game.players[entry.playerIndex];
     const q = entry.question;
@@ -682,6 +748,7 @@
 
   // ---- Results ----
   function viewResults() {
+    screen = "results";
     const ranked = game.players
       .map((p) => ({ ...p, pct: p.answered ? Math.round((p.correct / p.answered) * 100) : 0 }))
       .sort((a, b) => b.score - a.score || b.correct - a.correct);
@@ -689,12 +756,16 @@
     const winners = ranked.filter((p) => p.score === top).map((p) => p.name);
     const tie = winners.length > 1;
 
-    const history = load(LS_HISTORY, []);
-    history.push({
-      winner: tie ? winners.join(" & ") : winners[0],
-      summary: ranked.map((p) => `${p.name} ${p.score}`).join(" · "),
-    });
-    save(LS_HISTORY, history);
+    // Record the game once (viewResults can re-run on a language switch).
+    if (!game.recorded) {
+      const history = load(LS_HISTORY, []);
+      history.push({
+        winner: tie ? winners.join(" & ") : winners[0],
+        summary: ranked.map((p) => `${p.name} ${p.score}`).join(" · "),
+      });
+      save(LS_HISTORY, history);
+      game.recorded = true;
+    }
 
     const medals = ["🥇", "🥈", "🥉"];
     render(`
@@ -731,7 +802,7 @@
     app.querySelector("#again").addEventListener("click", () => {
       newGame(
         game.players.map((p) => ({ name: p.name })),
-        game.perPlayer, game.topics, game.timerSec, game.types
+        game.perPlayer, game.topicIndices, game.timerSec, game.types
       );
       viewTurnIntro();
     });
@@ -743,6 +814,7 @@
     app.innerHTML = '<p class="p-8 text-center text-rose-600">Failed to load quiz data.</p>';
   } else {
     updateChrome();
+    renderTopbar();
     viewHome();
   }
 })();

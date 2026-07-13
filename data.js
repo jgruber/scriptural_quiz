@@ -6136,7 +6136,1232 @@ window.QUIZ_DATA_BY_LANG = {
       }
     ]
   },
-  "pt": {
+  "pt-BR": {
+    "appendixTitle": "Verdades que amamos ensinar",
+    "topics": [
+      "FUTURO",
+      "FAMÍLIA",
+      "DEUS",
+      "ORAÇÃO",
+      "JESUS",
+      "REINO DE DEUS",
+      "SOFRIMENTO",
+      "MORTE",
+      "RELIGIÃO"
+    ],
+    "truths": [
+      {
+        "id": 1,
+        "topic": "FUTURO",
+        "number": 1,
+        "summary": "Os acontecimentos mundiais e a atitude das pessoas indicam que uma mudança está próxima.",
+        "scriptures": [
+          {
+            "ref": "Mateus 24:3",
+            "text": "Enquanto ele estava sentado no monte das Oliveiras, os discípulos se aproximaram dele em particular e disseram: “Diga-nos: Quando acontecerão essas coisas e qual será o sinal da sua presença e do final do sistema de coisas?”"
+          },
+          {
+            "ref": "Mateus 24:7, 8",
+            "text": "“Porque nação se levantará contra nação e reino contra reino; haverá falta de alimentos e terremotos num lugar após outro. Todas essas coisas são um começo das dores de aflição."
+          },
+          {
+            "ref": "Lucas 21:10, 11",
+            "text": "Então lhes disse: “Nação se levantará contra nação e reino contra reino. Haverá grandes terremotos e, num lugar após outro, falta de alimentos e pestilências; e as pessoas verão coisas atemorizantes e grandes sinais do céu."
+          },
+          {
+            "ref": "2 Timóteo 3:1-5",
+            "text": "Mas saiba que nos últimos dias haverá tempos críticos, difíceis de suportar. Pois os homens só amarão a si mesmos, amarão o dinheiro, serão presunçosos, arrogantes, blasfemadores, desobedientes aos pais, ingratos, desleais, desnaturados, não estarão dispostos a acordos, serão caluniadores, sem autodomínio, ferozes, sem amor ao que é bom, traidores, teimosos, cheios de orgulho, amarão os prazeres em vez de a Deus e manterão uma aparência de devoção a Deus, mas rejeitarão o poder dessa devoção. Desses, afaste-se."
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "topic": "FUTURO",
+        "number": 2,
+        "summary": "A Terra nunca será destruída.",
+        "scriptures": [
+          {
+            "ref": "Salmo 104:5",
+            "text": "Estabeleceu a terra em seus alicerces; Ela nunca, jamais, será tirada do seu lugar."
+          },
+          {
+            "ref": "Eclesiastes 1:4",
+            "text": "Uma geração vai e outra geração vem, Mas a terra permanece para sempre."
+          }
+        ]
+      },
+      {
+        "id": 3,
+        "topic": "FUTURO",
+        "number": 3,
+        "summary": "O meio ambiente será restaurado.",
+        "scriptures": [
+          {
+            "ref": "Isaías 35:1, 2",
+            "text": "O deserto e a terra árida se alegrarão, A planície desértica exultará e produzirá flores assim como o açafrão. Ela sem falta produzirá flores; Exultará e gritará de alegria. A glória do Líbano lhe será dada, Também o esplendor do Carmelo e de Sarom. As pessoas verão a glória de Jeová, o esplendor do nosso Deus."
+          },
+          {
+            "ref": "Apocalipse 11:18",
+            "text": "Mas as nações ficaram iradas, e veio tua própria ira, e veio o tempo determinado para os mortos serem julgados e para recompensar os teus escravos, os profetas, bem como os santos e os que temem o teu nome, tanto os pequenos como os grandes, e para arruinar os que arruínam a terra.”"
+          }
+        ]
+      },
+      {
+        "id": 4,
+        "topic": "FUTURO",
+        "number": 4,
+        "summary": "Todos terão saúde perfeita.",
+        "scriptures": [
+          {
+            "ref": "Isaías 33:24",
+            "text": "E nenhum habitante dirá: “Estou doente.” O povo que mora nesta terra terá o seu erro perdoado."
+          },
+          {
+            "ref": "Isaías 35:5, 6",
+            "text": "Naquele tempo se abrirão os olhos dos cegos E se destaparão os ouvidos dos surdos. Naquele tempo os mancos saltarão como os cervos, E a língua dos mudos gritará de alegria. Pois águas vão jorrar no deserto, E torrentes na planície desértica."
+          }
+        ]
+      },
+      {
+        "id": 5,
+        "topic": "FUTURO",
+        "number": 5,
+        "summary": "Você pode viver para sempre na Terra.",
+        "scriptures": [
+          {
+            "ref": "Salmo 37:29",
+            "text": "Os justos possuirão a terra E viverão nela para sempre."
+          },
+          {
+            "ref": "Mateus 5:5",
+            "text": "“Felizes os de temperamento brando, porque herdarão a terra."
+          }
+        ]
+      },
+      {
+        "id": 6,
+        "topic": "FAMÍLIA",
+        "number": 6,
+        "summary": "O marido deve ‘amar a sua esposa como a si mesmo’.",
+        "scriptures": [
+          {
+            "ref": "Efésios 5:33",
+            "text": "No entanto, cada um de vocês ame a sua esposa como a si mesmo; por outro lado, a esposa deve ter profundo respeito pelo marido."
+          },
+          {
+            "ref": "Colossenses 3:19",
+            "text": "Marido, continue a amar a sua esposa e não se ire amargamente com ela."
+          }
+        ]
+      },
+      {
+        "id": 7,
+        "topic": "FAMÍLIA",
+        "number": 7,
+        "summary": "A esposa deve respeitar profundamente seu marido.",
+        "scriptures": [
+          {
+            "ref": "Efésios 5:33",
+            "text": "No entanto, cada um de vocês ame a sua esposa como a si mesmo; por outro lado, a esposa deve ter profundo respeito pelo marido."
+          },
+          {
+            "ref": "Colossenses 3:18",
+            "text": "Esposa, esteja sujeita ao seu marido, assim como é apropriado no Senhor."
+          }
+        ]
+      },
+      {
+        "id": 8,
+        "topic": "FAMÍLIA",
+        "number": 8,
+        "summary": "Marido e esposa devem ser leais um ao outro.",
+        "scriptures": [
+          {
+            "ref": "Malaquias 2:16",
+            "text": "Pois eu odeio o divórcio”, diz Jeová, o Deus de Israel, “e também aquele que cobre a sua roupa de violência”, diz Jeová dos exércitos. “Estejam atentos ao seu espírito e não ajam traiçoeiramente."
+          },
+          {
+            "ref": "Mateus 19:4-6",
+            "text": "Ele respondeu: “Não leram que aquele que os criou no princípio os fez homem e mulher, e disse: ‘Por essa razão o homem deixará seu pai e sua mãe e se apegará à sua esposa, e os dois serão uma só carne’? De modo que não são mais dois, mas uma só carne. Portanto, o que Deus pôs sob o mesmo jugo, o homem não deve separar.”"
+          },
+          {
+            "ref": "Mateus 19:9",
+            "text": "Eu lhes digo que quem se divorcia da sua esposa, a não ser por causa de imoralidade sexual, e se casa com outra, comete adultério.”"
+          },
+          {
+            "ref": "Hebreus 13:4",
+            "text": "O casamento seja honroso entre todos, e o leito conjugal mantido puro, porque Deus julgará os que praticam imoralidade sexual e os adúlteros."
+          }
+        ]
+      },
+      {
+        "id": 9,
+        "topic": "FAMÍLIA",
+        "number": 9,
+        "summary": "Filhos que respeitam e obedecem os pais só têm a ganhar.",
+        "scriptures": [
+          {
+            "ref": "Provérbios 1:8, 9",
+            "text": "Escute, meu filho, a disciplina do seu pai E não abandone a instrução da sua mãe. Pois são uma linda coroa de flores para a sua cabeça E um belo adorno para o seu pescoço."
+          },
+          {
+            "ref": "Efésios 6:1-3",
+            "text": "Filhos, sejam obedientes aos seus pais em união com o Senhor, pois isso é justo. “Honre seu pai e sua mãe” — esse é o primeiro mandamento com uma promessa: “Para que tudo vá bem com você, e você permaneça por muito tempo na terra.”"
+          }
+        ]
+      },
+      {
+        "id": 10,
+        "topic": "DEUS",
+        "number": 10,
+        "summary": "Deus tem nome.",
+        "scriptures": [
+          {
+            "ref": "Salmo 83:18",
+            "text": "Que as pessoas saibam que tu, cujo nome é Jeová, Somente tu és o Altíssimo sobre toda a terra."
+          },
+          {
+            "ref": "Jeremias 10:10",
+            "text": "Mas Jeová é o verdadeiro Deus. Ele é o Deus vivente e o Rei eterno. Por causa da sua indignação a terra tremerá, E nenhuma nação poderá suportar a sua fúria."
+          }
+        ]
+      },
+      {
+        "id": 11,
+        "topic": "DEUS",
+        "number": 11,
+        "summary": "Deus se comunica conosco.",
+        "scriptures": [
+          {
+            "ref": "2 Timóteo 3:16, 17",
+            "text": "Toda a Escritura é inspirada por Deus e proveitosa para ensinar, para repreender, para endireitar as coisas, para disciplinar em justiça, a fim de que o homem de Deus seja plenamente competente, completamente equipado para toda boa obra."
+          },
+          {
+            "ref": "2 Pedro 1:20, 21",
+            "text": "Pois, acima de tudo, vocês sabem que nenhuma profecia das Escrituras se origina de interpretação pessoal. Porque a profecia nunca foi produzida pela vontade do homem, mas os homens falaram da parte de Deus conforme eram movidos por espírito santo."
+          }
+        ]
+      },
+      {
+        "id": 12,
+        "topic": "DEUS",
+        "number": 12,
+        "summary": "Deus é justo e não tem preconceitos.",
+        "scriptures": [
+          {
+            "ref": "Deuteronômio 10:17",
+            "text": "Pois Jeová, seu Deus, é o Deus dos deuses e o Senhor dos senhores, o Deus grande, poderoso e que inspira temor, que não trata a ninguém com parcialidade nem aceita suborno."
+          },
+          {
+            "ref": "Atos 10:34, 35",
+            "text": "Em vista disso, Pedro começou a falar; ele disse: “Agora eu entendo claramente que Deus não é parcial, mas, em toda nação, ele aceita aquele que o teme e faz o que é direito."
+          }
+        ]
+      },
+      {
+        "id": 13,
+        "topic": "DEUS",
+        "number": 13,
+        "summary": "Deus quer nos ajudar.",
+        "scriptures": [
+          {
+            "ref": "Salmo 46:1",
+            "text": "Deus é nosso refúgio e nossa força, Uma ajuda encontrada prontamente em tempos de aflição."
+          },
+          {
+            "ref": "Salmo 145:18, 19",
+            "text": "Jeová está perto de todos os que o invocam, De todos os que o invocam em verdade. ר [rexe] Ele satisfaz o desejo dos que o temem; Ouve o seu clamor por ajuda e os livra."
+          }
+        ]
+      },
+      {
+        "id": 14,
+        "topic": "ORAÇÃO",
+        "number": 14,
+        "summary": "Deus quer que oremos a ele.",
+        "scriptures": [
+          {
+            "ref": "Salmo 62:8",
+            "text": "Confie sempre nele, ó povo. Derramem o coração diante dele. Deus é um refúgio para nós. (Selá)"
+          },
+          {
+            "ref": "Salmo 65:2",
+            "text": "Ó Ouvinte de oração, a ti virão pessoas de todo tipo."
+          },
+          {
+            "ref": "1 Pedro 5:7",
+            "text": "ao passo que lançam sobre ele toda a sua ansiedade, porque ele cuida de vocês."
+          }
+        ]
+      },
+      {
+        "id": 15,
+        "topic": "ORAÇÃO",
+        "number": 15,
+        "summary": "A Bíblia nos ensina a orar.",
+        "scriptures": [
+          {
+            "ref": "Mateus 6:7-13",
+            "text": "Quando orar, não diga as mesmas coisas vez após vez, como fazem as pessoas das nações, pois imaginam que serão ouvidas por usarem muitas palavras. Não sejam como elas, porque o seu Pai sabe do que vocês necessitam, antes mesmo de lhe pedirem. “Portanto, orem do seguinte modo: “‘Pai nosso, que estás nos céus, santificado seja o teu nome. Venha o teu Reino. Seja feita a tua vontade, como no céu, assim também na terra. Dá-nos hoje o nosso pão para este dia; e perdoa-nos as nossas dívidas, assim como nós também perdoamos os nossos devedores. E não nos leves à tentação, mas livra-nos do Maligno.’"
+          },
+          {
+            "ref": "Lucas 11:1-4",
+            "text": "Numa ocasião, ele estava em certo lugar orando e, quando parou, um dos seus discípulos lhe disse: “Senhor, ensine-nos a orar, como também João ensinou os discípulos dele.” Ele lhes disse então: “Sempre que orarem, digam: ‘Pai, santificado seja o teu nome. Venha o teu Reino. Dá-nos o nosso pão cada dia, segundo as nossas necessidades diárias. E perdoa-nos os nossos pecados, pois nós mesmos também perdoamos a todo aquele que está em dívida conosco; e não nos leves à tentação.’”"
+          }
+        ]
+      },
+      {
+        "id": 16,
+        "topic": "ORAÇÃO",
+        "number": 16,
+        "summary": "Devemos orar com frequência.",
+        "scriptures": [
+          {
+            "ref": "Mateus 7:7, 8",
+            "text": "“Persistam em pedir, e lhes será dado; persistam em buscar, e acharão; persistam em bater, e lhes será aberto; pois todo aquele que pede, recebe; e todo aquele que busca, acha; e a todo aquele que bate, se abrirá."
+          },
+          {
+            "ref": "1 Tessalonicenses 5:17",
+            "text": "Orem constantemente."
+          }
+        ]
+      },
+      {
+        "id": 17,
+        "topic": "JESUS",
+        "number": 17,
+        "summary": "Jesus foi um grande instrutor, e seus conselhos sempre funcionam.",
+        "scriptures": [
+          {
+            "ref": "Mateus 6:14, 15",
+            "text": "“Pois, se vocês perdoarem aos homens as falhas deles, o seu Pai celestial também perdoará vocês; ao passo que, se não perdoarem aos homens as falhas deles, o seu Pai também não perdoará as falhas de vocês."
+          },
+          {
+            "ref": "Mateus 6:34",
+            "text": "Portanto, nunca fiquem ansiosos por causa do amanhã, pois o amanhã terá suas próprias ansiedades. Bastam a cada dia suas próprias dificuldades."
+          },
+          {
+            "ref": "Mateus 7:12",
+            "text": "“Portanto, todas as coisas que querem que os homens façam a vocês, façam também a eles. De fato, isso é o que a Lei e os Profetas querem dizer."
+          }
+        ]
+      },
+      {
+        "id": 18,
+        "topic": "JESUS",
+        "number": 18,
+        "summary": "Jesus predisse os acontecimentos que vemos hoje.",
+        "scriptures": [
+          {
+            "ref": "Mateus 24:3",
+            "text": "Enquanto ele estava sentado no monte das Oliveiras, os discípulos se aproximaram dele em particular e disseram: “Diga-nos: Quando acontecerão essas coisas e qual será o sinal da sua presença e do final do sistema de coisas?”"
+          },
+          {
+            "ref": "Mateus 24:7, 8",
+            "text": "“Porque nação se levantará contra nação e reino contra reino; haverá falta de alimentos e terremotos num lugar após outro. Todas essas coisas são um começo das dores de aflição."
+          },
+          {
+            "ref": "Mateus 24:14",
+            "text": "E estas boas novas do Reino serão pregadas em toda a terra habitada, em testemunho a todas as nações, e então virá o fim."
+          },
+          {
+            "ref": "Lucas 21:10, 11",
+            "text": "Então lhes disse: “Nação se levantará contra nação e reino contra reino. Haverá grandes terremotos e, num lugar após outro, falta de alimentos e pestilências; e as pessoas verão coisas atemorizantes e grandes sinais do céu."
+          }
+        ]
+      },
+      {
+        "id": 19,
+        "topic": "JESUS",
+        "number": 19,
+        "summary": "Jesus é o Filho de Deus.",
+        "scriptures": [
+          {
+            "ref": "Mateus 16:16",
+            "text": "Simão Pedro respondeu: “O senhor é o Cristo, o Filho do Deus vivente.”"
+          },
+          {
+            "ref": "João 3:16",
+            "text": "“Porque Deus amou tanto o mundo, que deu o seu Filho unigênito, para que todo aquele que nele exercer fé não seja destruído, mas tenha vida eterna."
+          },
+          {
+            "ref": "1 João 4:15",
+            "text": "Quem reconhece que Jesus é Filho de Deus, com ele Deus permanece em união, e ele em união com Deus."
+          }
+        ]
+      },
+      {
+        "id": 20,
+        "topic": "JESUS",
+        "number": 20,
+        "summary": "Jesus não é o Deus Todo-Poderoso.",
+        "scriptures": [
+          {
+            "ref": "João 14:28",
+            "text": "Vocês ouviram que eu lhes disse: ‘Vou embora e vou voltar para vocês.’ Se vocês me amassem, se alegrariam de que vou para o Pai, pois o Pai é maior do que eu."
+          },
+          {
+            "ref": "1 Coríntios 11:3",
+            "text": "Mas quero que saibam que o cabeça de todo homem é o Cristo; o cabeça da mulher é o homem; e o cabeça do Cristo é Deus."
+          }
+        ]
+      },
+      {
+        "id": 21,
+        "topic": "REINO DE DEUS",
+        "number": 21,
+        "summary": "O Reino de Deus é um governo de verdade lá no céu.",
+        "scriptures": [
+          {
+            "ref": "Daniel 2:44",
+            "text": "“Nos dias desses reis, o Deus do céu estabelecerá um reino que jamais será destruído. E esse reino não passará para as mãos de nenhum outro povo. Vai esmigalhar e pôr um fim a todos esses reinos, e somente ele permanecerá para sempre,"
+          },
+          {
+            "ref": "Daniel 7:13, 14",
+            "text": "“Continuei olhando nas visões da noite e vi alguém parecido com um filho de homem vir com as nuvens dos céus; ele obteve acesso ao Antigo de Dias e foi conduzido à sua presença. E foi-lhe dado domínio, honra e um reino, para que os povos, nações e línguas o servissem. Seu domínio é um domínio eterno, que jamais terminará, e seu reino não será destruído."
+          },
+          {
+            "ref": "Mateus 6:9, 10",
+            "text": "“Portanto, orem do seguinte modo: “‘Pai nosso, que estás nos céus, santificado seja o teu nome. Venha o teu Reino. Seja feita a tua vontade, como no céu, assim também na terra."
+          },
+          {
+            "ref": "Apocalipse 11:15",
+            "text": "O sétimo anjo tocou a sua trombeta. E houve vozes altas no céu, dizendo: “O reino do mundo se tornou o Reino do nosso Senhor e do seu Cristo, e Ele reinará para todo o sempre.”"
+          }
+        ]
+      },
+      {
+        "id": 22,
+        "topic": "REINO DE DEUS",
+        "number": 22,
+        "summary": "O Reino de Deus vai substituir os governos humanos.",
+        "scriptures": [
+          {
+            "ref": "Salmo 2:7-9",
+            "text": "Proclamarei o decreto de Jeová; Ele me disse: “Você é meu filho; Hoje eu me tornei seu pai. Peça-me, e eu lhe darei nações como herança E os confins da terra como sua propriedade. Você as quebrará com um cetro de ferro, E as despedaçará como a um vaso de barro.”"
+          },
+          {
+            "ref": "Daniel 2:44",
+            "text": "“Nos dias desses reis, o Deus do céu estabelecerá um reino que jamais será destruído. E esse reino não passará para as mãos de nenhum outro povo. Vai esmigalhar e pôr um fim a todos esses reinos, e somente ele permanecerá para sempre,"
+          }
+        ]
+      },
+      {
+        "id": 23,
+        "topic": "REINO DE DEUS",
+        "number": 23,
+        "summary": "O Reino de Deus é a única solução para os problemas da humanidade.",
+        "scriptures": [
+          {
+            "ref": "Salmo 37:10, 11",
+            "text": "Apenas mais um pouco, e os maus deixarão de existir; Você olhará para onde estavam, E eles não estarão lá. Mas os mansos possuirão a terra E terão grande alegria na abundância de paz."
+          },
+          {
+            "ref": "Salmo 46:9",
+            "text": "Ele põe fim às guerras em toda a terra. Quebra o arco e despedaça a lança, Queima as carroças militares no fogo."
+          },
+          {
+            "ref": "Isaías 65:21-23",
+            "text": "Eles construirão casas e morarão nelas; Plantarão vinhedos e comerão os seus frutos. Não construirão para outro morar, Nem plantarão para outros comerem. Pois os dias do meu povo serão como os dias de uma árvore, E meus escolhidos tirarão pleno proveito do trabalho das suas mãos. Não trabalharão arduamente em vão, Nem darão à luz filhos que sofrerão calamidade, Porque eles e seus filhos São a descendência abençoada por Jeová."
+          }
+        ]
+      },
+      {
+        "id": 24,
+        "topic": "SOFRIMENTO",
+        "number": 24,
+        "summary": "Deus não causa nosso sofrimento.",
+        "scriptures": [
+          {
+            "ref": "Deuteronômio 32:4",
+            "text": "A Rocha — perfeito é tudo o que ele faz, Pois todos os seus caminhos são justos. Deus de fidelidade, que nunca é injusto; Justo e reto é ele."
+          },
+          {
+            "ref": "Tiago 1:13",
+            "text": "Quando estiver sob provação, que ninguém diga: “Estou sendo provado por Deus.” Pois, com coisas más, Deus não pode ser provado, nem prova a ninguém."
+          }
+        ]
+      },
+      {
+        "id": 25,
+        "topic": "SOFRIMENTO",
+        "number": 25,
+        "summary": "Satanás governa este mundo.",
+        "scriptures": [
+          {
+            "ref": "Lucas 4:5, 6",
+            "text": "Assim ele o levou para cima e lhe mostrou todos os reinos da terra habitada, num instante. Então, o Diabo lhe disse: “Eu lhe darei toda esta autoridade, bem como a glória destes reinos, porque ela me foi entregue e a dou a quem eu quiser."
+          },
+          {
+            "ref": "1 João 5:19",
+            "text": "Sabemos que nos originamos de Deus, mas o mundo inteiro está no poder do Maligno."
+          }
+        ]
+      },
+      {
+        "id": 26,
+        "topic": "SOFRIMENTO",
+        "number": 26,
+        "summary": "Deus vê quando você sofre e quer ajudar.",
+        "scriptures": [
+          {
+            "ref": "Salmo 34:17-19",
+            "text": "Eles clamaram, e Jeová ouviu; Ele os livrou de todas as suas aflições. ק [cofe] Jeová está perto dos que têm coração quebrantado, Ele salva os que têm espírito esmagado. ר [rexe] Muitas são as dificuldades do justo, Mas Jeová o livra de todas elas."
+          },
+          {
+            "ref": "Isaías 41:10",
+            "text": "Não tenha medo, pois estou com você. Não fique ansioso, pois eu sou o seu Deus. Vou fortalecê-lo, sim, vou ajudá-lo. Vou segurá-lo firmemente com a minha mão direita de justiça.’"
+          },
+          {
+            "ref": "Isaías 41:13",
+            "text": "Pois eu, Jeová, seu Deus, seguro a sua mão direita; Sou aquele que lhe diz: ‘Não tenha medo. Eu o ajudarei.’"
+          }
+        ]
+      },
+      {
+        "id": 27,
+        "topic": "SOFRIMENTO",
+        "number": 27,
+        "summary": "Em breve, Deus vai acabar com o sofrimento.",
+        "scriptures": [
+          {
+            "ref": "Isaías 65:17",
+            "text": "Pois vejam! Crio novos céus e uma nova terra; E as coisas anteriores não serão lembradas, Nem voltarão ao coração."
+          },
+          {
+            "ref": "Apocalipse 21:3, 4",
+            "text": "Então ouvi uma voz alta do trono dizer: “Veja! A tenda de Deus está com a humanidade; ele residirá com eles, e eles serão o seu povo. O próprio Deus estará com eles. Ele enxugará dos seus olhos toda lágrima, e não haverá mais morte, nem haverá mais tristeza, nem choro, nem dor. As coisas anteriores já passaram.”"
+          }
+        ]
+      },
+      {
+        "id": 28,
+        "topic": "MORTE",
+        "number": 28,
+        "summary": "Os mortos estão inconscientes; eles não estão sofrendo.",
+        "scriptures": [
+          {
+            "ref": "Eclesiastes 9:5",
+            "text": "Pois os vivos sabem que morrerão, mas os mortos não sabem absolutamente nada, nem têm mais recompensa, porque toda lembrança deles caiu no esquecimento."
+          },
+          {
+            "ref": "João 11:11-14",
+            "text": "Depois de dizer isso, ele acrescentou: “Lázaro, nosso amigo, adormeceu, mas eu vou lá para acordá-lo.” Então os discípulos lhe disseram: “Senhor, se ele está dormindo, ficará bom.” Jesus, no entanto, havia falado da morte dele; mas eles imaginavam que estivesse falando do sono natural. Então, Jesus lhes disse claramente: “Lázaro morreu;"
+          }
+        ]
+      },
+      {
+        "id": 29,
+        "topic": "MORTE",
+        "number": 29,
+        "summary": "Os mortos não podem nos ajudar nem nos prejudicar.",
+        "scriptures": [
+          {
+            "ref": "Salmo 146:4",
+            "text": "Seu espírito sai, e eles voltam ao solo; Nesse mesmo dia os seus pensamentos se acabam."
+          },
+          {
+            "ref": "Eclesiastes 9:6",
+            "text": "Também seu amor, seu ódio e seu ciúme já não existem, e eles não têm mais parte em nada do que se faz debaixo do sol."
+          },
+          {
+            "ref": "Eclesiastes 9:10",
+            "text": "Tudo o que a sua mão achar para fazer, faça-o com toda a sua força, pois não há trabalho, nem planejamento, nem conhecimento, nem sabedoria na Sepultura, o lugar para onde você vai."
+          }
+        ]
+      },
+      {
+        "id": 30,
+        "topic": "MORTE",
+        "number": 30,
+        "summary": "Pessoas amadas que já morreram serão ressuscitadas.",
+        "scriptures": [
+          {
+            "ref": "Jó 14:13-15",
+            "text": "Quem dera que me escondesses na Sepultura, Que me ocultasses até a tua ira passar, Que estabelecesses um tempo e então te lembrasses de mim! Quando um homem morre, pode ele viver novamente? Esperarei todos os dias do meu serviço obrigatório, Até vir o meu livramento. Tu chamarás, e eu te responderei. Terás saudades do trabalho das tuas mãos."
+          },
+          {
+            "ref": "João 5:28, 29",
+            "text": "Não fiquem admirados com isso, pois vem a hora em que todos os que estão nos túmulos memoriais ouvirão a voz dele e sairão: os que fizeram coisas boas, para uma ressurreição de vida; e os que praticaram coisas ruins, para uma ressurreição de julgamento."
+          },
+          {
+            "ref": "Atos 24:15",
+            "text": "E eu tenho esperança em Deus, esperança que esses homens também têm, de que haverá uma ressurreição tanto de justos como de injustos."
+          }
+        ]
+      },
+      {
+        "id": 31,
+        "topic": "MORTE",
+        "number": 31,
+        "summary": "“Não haverá mais morte.”",
+        "scriptures": [
+          {
+            "ref": "Apocalipse 21:3, 4",
+            "text": "Então ouvi uma voz alta do trono dizer: “Veja! A tenda de Deus está com a humanidade; ele residirá com eles, e eles serão o seu povo. O próprio Deus estará com eles. Ele enxugará dos seus olhos toda lágrima, e não haverá mais morte, nem haverá mais tristeza, nem choro, nem dor. As coisas anteriores já passaram.”"
+          },
+          {
+            "ref": "Isaías 25:8",
+            "text": "Ele acabará com a morte para sempre, E o Soberano Senhor Jeová enxugará as lágrimas de todo rosto. Ele tirará de toda a terra a humilhação de seu povo, Pois o próprio Jeová falou isso."
+          }
+        ]
+      },
+      {
+        "id": 32,
+        "topic": "RELIGIÃO",
+        "number": 32,
+        "summary": "Nem todas as religiões agradam a Deus.",
+        "scriptures": [
+          {
+            "ref": "Jeremias 7:11",
+            "text": "Será que esta casa que leva o meu nome se tornou um abrigo de ladrões aos seus olhos? Saibam que eu mesmo estou vendo isso”, diz Jeová."
+          },
+          {
+            "ref": "Mateus 7:13, 14",
+            "text": "“Entrem pelo portão estreito, porque largo é o portão e espaçosa é a estrada que conduz à destruição, e muitos entram por ele; ao passo que estreito é o portão e apertada a estrada que conduz à vida, e poucos a acham."
+          },
+          {
+            "ref": "Mateus 7:21-23",
+            "text": "“Nem todo o que me disser: ‘Senhor, Senhor’, entrará no Reino dos céus, mas apenas aquele que fizer a vontade do meu Pai, que está nos céus. Muitos me dirão naquele dia: ‘Senhor, Senhor, não profetizamos em seu nome, não expulsamos demônios em seu nome e não fizemos muitas obras poderosas em seu nome?’ Mas eu lhes declararei, então: ‘Nunca os conheci! Afastem-se de mim, vocês que fazem o que é contra a lei!’"
+          }
+        ]
+      },
+      {
+        "id": 33,
+        "topic": "RELIGIÃO",
+        "number": 33,
+        "summary": "Deus odeia a hipocrisia.",
+        "scriptures": [
+          {
+            "ref": "Isaías 29:13",
+            "text": "Jeová diz: “Este povo se aproxima de mim com a boca E me honra com os lábios, Mas o seu coração está muito longe de mim; E a adoração que me prestam se baseia em regras de homens, que lhes foram ensinadas."
+          },
+          {
+            "ref": "Miqueias 3:11",
+            "text": "Os líderes dela julgam por suborno, Seus sacerdotes instruem por um preço, E seus profetas praticam adivinhação por dinheiro. E ainda assim se apoiam em Jeová, dizendo: “Não está Jeová conosco? Nenhuma calamidade virá sobre nós.”"
+          },
+          {
+            "ref": "Marcos 7:6-8",
+            "text": "Ele lhes disse: “Isaías profetizou apropriadamente a respeito de vocês, hipócritas, como está escrito: ‘Este povo me honra com os lábios, mas seu coração está muito longe de mim. É em vão que continuam a me adorar, pois ensinam as regras de homens como doutrinas.’ Vocês abandonam o mandamento de Deus e se apegam à tradição de homens.”"
+          }
+        ]
+      },
+      {
+        "id": 34,
+        "topic": "RELIGIÃO",
+        "number": 34,
+        "summary": "O amor identifica a religião verdadeira.",
+        "scriptures": [
+          {
+            "ref": "Miqueias 4:3",
+            "text": "Ele fará julgamento entre muitos povos E resolverá as questões referentes a poderosas nações distantes. Eles transformarão as suas espadas em arados, E as suas lanças em podadeiras. Nação não levantará espada contra nação, Nem aprenderão mais a guerra."
+          },
+          {
+            "ref": "João 13:34, 35",
+            "text": "Eu lhes dou um novo mandamento: Amem uns aos outros; assim como eu amei vocês, amem também uns aos outros. Por meio disto todos saberão que vocês são meus discípulos: se tiverem amor entre si.”"
+          }
+        ]
+      }
+    ],
+    "scriptures": [
+      {
+        "ref": "Mateus 24:3",
+        "text": "Enquanto ele estava sentado no monte das Oliveiras, os discípulos se aproximaram dele em particular e disseram: “Diga-nos: Quando acontecerão essas coisas e qual será o sinal da sua presença e do final do sistema de coisas?”",
+        "summary": "Os acontecimentos mundiais e a atitude das pessoas indicam que uma mudança está próxima.",
+        "topic": "FUTURO",
+        "truthId": 1
+      },
+      {
+        "ref": "Mateus 24:7, 8",
+        "text": "“Porque nação se levantará contra nação e reino contra reino; haverá falta de alimentos e terremotos num lugar após outro. Todas essas coisas são um começo das dores de aflição.",
+        "summary": "Os acontecimentos mundiais e a atitude das pessoas indicam que uma mudança está próxima.",
+        "topic": "FUTURO",
+        "truthId": 1
+      },
+      {
+        "ref": "Lucas 21:10, 11",
+        "text": "Então lhes disse: “Nação se levantará contra nação e reino contra reino. Haverá grandes terremotos e, num lugar após outro, falta de alimentos e pestilências; e as pessoas verão coisas atemorizantes e grandes sinais do céu.",
+        "summary": "Os acontecimentos mundiais e a atitude das pessoas indicam que uma mudança está próxima.",
+        "topic": "FUTURO",
+        "truthId": 1
+      },
+      {
+        "ref": "2 Timóteo 3:1-5",
+        "text": "Mas saiba que nos últimos dias haverá tempos críticos, difíceis de suportar. Pois os homens só amarão a si mesmos, amarão o dinheiro, serão presunçosos, arrogantes, blasfemadores, desobedientes aos pais, ingratos, desleais, desnaturados, não estarão dispostos a acordos, serão caluniadores, sem autodomínio, ferozes, sem amor ao que é bom, traidores, teimosos, cheios de orgulho, amarão os prazeres em vez de a Deus e manterão uma aparência de devoção a Deus, mas rejeitarão o poder dessa devoção. Desses, afaste-se.",
+        "summary": "Os acontecimentos mundiais e a atitude das pessoas indicam que uma mudança está próxima.",
+        "topic": "FUTURO",
+        "truthId": 1
+      },
+      {
+        "ref": "Salmo 104:5",
+        "text": "Estabeleceu a terra em seus alicerces; Ela nunca, jamais, será tirada do seu lugar.",
+        "summary": "A Terra nunca será destruída.",
+        "topic": "FUTURO",
+        "truthId": 2
+      },
+      {
+        "ref": "Eclesiastes 1:4",
+        "text": "Uma geração vai e outra geração vem, Mas a terra permanece para sempre.",
+        "summary": "A Terra nunca será destruída.",
+        "topic": "FUTURO",
+        "truthId": 2
+      },
+      {
+        "ref": "Isaías 35:1, 2",
+        "text": "O deserto e a terra árida se alegrarão, A planície desértica exultará e produzirá flores assim como o açafrão. Ela sem falta produzirá flores; Exultará e gritará de alegria. A glória do Líbano lhe será dada, Também o esplendor do Carmelo e de Sarom. As pessoas verão a glória de Jeová, o esplendor do nosso Deus.",
+        "summary": "O meio ambiente será restaurado.",
+        "topic": "FUTURO",
+        "truthId": 3
+      },
+      {
+        "ref": "Apocalipse 11:18",
+        "text": "Mas as nações ficaram iradas, e veio tua própria ira, e veio o tempo determinado para os mortos serem julgados e para recompensar os teus escravos, os profetas, bem como os santos e os que temem o teu nome, tanto os pequenos como os grandes, e para arruinar os que arruínam a terra.”",
+        "summary": "O meio ambiente será restaurado.",
+        "topic": "FUTURO",
+        "truthId": 3
+      },
+      {
+        "ref": "Isaías 33:24",
+        "text": "E nenhum habitante dirá: “Estou doente.” O povo que mora nesta terra terá o seu erro perdoado.",
+        "summary": "Todos terão saúde perfeita.",
+        "topic": "FUTURO",
+        "truthId": 4
+      },
+      {
+        "ref": "Isaías 35:5, 6",
+        "text": "Naquele tempo se abrirão os olhos dos cegos E se destaparão os ouvidos dos surdos. Naquele tempo os mancos saltarão como os cervos, E a língua dos mudos gritará de alegria. Pois águas vão jorrar no deserto, E torrentes na planície desértica.",
+        "summary": "Todos terão saúde perfeita.",
+        "topic": "FUTURO",
+        "truthId": 4
+      },
+      {
+        "ref": "Salmo 37:29",
+        "text": "Os justos possuirão a terra E viverão nela para sempre.",
+        "summary": "Você pode viver para sempre na Terra.",
+        "topic": "FUTURO",
+        "truthId": 5
+      },
+      {
+        "ref": "Mateus 5:5",
+        "text": "“Felizes os de temperamento brando, porque herdarão a terra.",
+        "summary": "Você pode viver para sempre na Terra.",
+        "topic": "FUTURO",
+        "truthId": 5
+      },
+      {
+        "ref": "Efésios 5:33",
+        "text": "No entanto, cada um de vocês ame a sua esposa como a si mesmo; por outro lado, a esposa deve ter profundo respeito pelo marido.",
+        "summary": "O marido deve ‘amar a sua esposa como a si mesmo’.",
+        "topic": "FAMÍLIA",
+        "truthId": 6
+      },
+      {
+        "ref": "Colossenses 3:19",
+        "text": "Marido, continue a amar a sua esposa e não se ire amargamente com ela.",
+        "summary": "O marido deve ‘amar a sua esposa como a si mesmo’.",
+        "topic": "FAMÍLIA",
+        "truthId": 6
+      },
+      {
+        "ref": "Efésios 5:33",
+        "text": "No entanto, cada um de vocês ame a sua esposa como a si mesmo; por outro lado, a esposa deve ter profundo respeito pelo marido.",
+        "summary": "A esposa deve respeitar profundamente seu marido.",
+        "topic": "FAMÍLIA",
+        "truthId": 7
+      },
+      {
+        "ref": "Colossenses 3:18",
+        "text": "Esposa, esteja sujeita ao seu marido, assim como é apropriado no Senhor.",
+        "summary": "A esposa deve respeitar profundamente seu marido.",
+        "topic": "FAMÍLIA",
+        "truthId": 7
+      },
+      {
+        "ref": "Malaquias 2:16",
+        "text": "Pois eu odeio o divórcio”, diz Jeová, o Deus de Israel, “e também aquele que cobre a sua roupa de violência”, diz Jeová dos exércitos. “Estejam atentos ao seu espírito e não ajam traiçoeiramente.",
+        "summary": "Marido e esposa devem ser leais um ao outro.",
+        "topic": "FAMÍLIA",
+        "truthId": 8
+      },
+      {
+        "ref": "Mateus 19:4-6",
+        "text": "Ele respondeu: “Não leram que aquele que os criou no princípio os fez homem e mulher, e disse: ‘Por essa razão o homem deixará seu pai e sua mãe e se apegará à sua esposa, e os dois serão uma só carne’? De modo que não são mais dois, mas uma só carne. Portanto, o que Deus pôs sob o mesmo jugo, o homem não deve separar.”",
+        "summary": "Marido e esposa devem ser leais um ao outro.",
+        "topic": "FAMÍLIA",
+        "truthId": 8
+      },
+      {
+        "ref": "Mateus 19:9",
+        "text": "Eu lhes digo que quem se divorcia da sua esposa, a não ser por causa de imoralidade sexual, e se casa com outra, comete adultério.”",
+        "summary": "Marido e esposa devem ser leais um ao outro.",
+        "topic": "FAMÍLIA",
+        "truthId": 8
+      },
+      {
+        "ref": "Hebreus 13:4",
+        "text": "O casamento seja honroso entre todos, e o leito conjugal mantido puro, porque Deus julgará os que praticam imoralidade sexual e os adúlteros.",
+        "summary": "Marido e esposa devem ser leais um ao outro.",
+        "topic": "FAMÍLIA",
+        "truthId": 8
+      },
+      {
+        "ref": "Provérbios 1:8, 9",
+        "text": "Escute, meu filho, a disciplina do seu pai E não abandone a instrução da sua mãe. Pois são uma linda coroa de flores para a sua cabeça E um belo adorno para o seu pescoço.",
+        "summary": "Filhos que respeitam e obedecem os pais só têm a ganhar.",
+        "topic": "FAMÍLIA",
+        "truthId": 9
+      },
+      {
+        "ref": "Efésios 6:1-3",
+        "text": "Filhos, sejam obedientes aos seus pais em união com o Senhor, pois isso é justo. “Honre seu pai e sua mãe” — esse é o primeiro mandamento com uma promessa: “Para que tudo vá bem com você, e você permaneça por muito tempo na terra.”",
+        "summary": "Filhos que respeitam e obedecem os pais só têm a ganhar.",
+        "topic": "FAMÍLIA",
+        "truthId": 9
+      },
+      {
+        "ref": "Salmo 83:18",
+        "text": "Que as pessoas saibam que tu, cujo nome é Jeová, Somente tu és o Altíssimo sobre toda a terra.",
+        "summary": "Deus tem nome.",
+        "topic": "DEUS",
+        "truthId": 10
+      },
+      {
+        "ref": "Jeremias 10:10",
+        "text": "Mas Jeová é o verdadeiro Deus. Ele é o Deus vivente e o Rei eterno. Por causa da sua indignação a terra tremerá, E nenhuma nação poderá suportar a sua fúria.",
+        "summary": "Deus tem nome.",
+        "topic": "DEUS",
+        "truthId": 10
+      },
+      {
+        "ref": "2 Timóteo 3:16, 17",
+        "text": "Toda a Escritura é inspirada por Deus e proveitosa para ensinar, para repreender, para endireitar as coisas, para disciplinar em justiça, a fim de que o homem de Deus seja plenamente competente, completamente equipado para toda boa obra.",
+        "summary": "Deus se comunica conosco.",
+        "topic": "DEUS",
+        "truthId": 11
+      },
+      {
+        "ref": "2 Pedro 1:20, 21",
+        "text": "Pois, acima de tudo, vocês sabem que nenhuma profecia das Escrituras se origina de interpretação pessoal. Porque a profecia nunca foi produzida pela vontade do homem, mas os homens falaram da parte de Deus conforme eram movidos por espírito santo.",
+        "summary": "Deus se comunica conosco.",
+        "topic": "DEUS",
+        "truthId": 11
+      },
+      {
+        "ref": "Deuteronômio 10:17",
+        "text": "Pois Jeová, seu Deus, é o Deus dos deuses e o Senhor dos senhores, o Deus grande, poderoso e que inspira temor, que não trata a ninguém com parcialidade nem aceita suborno.",
+        "summary": "Deus é justo e não tem preconceitos.",
+        "topic": "DEUS",
+        "truthId": 12
+      },
+      {
+        "ref": "Atos 10:34, 35",
+        "text": "Em vista disso, Pedro começou a falar; ele disse: “Agora eu entendo claramente que Deus não é parcial, mas, em toda nação, ele aceita aquele que o teme e faz o que é direito.",
+        "summary": "Deus é justo e não tem preconceitos.",
+        "topic": "DEUS",
+        "truthId": 12
+      },
+      {
+        "ref": "Salmo 46:1",
+        "text": "Deus é nosso refúgio e nossa força, Uma ajuda encontrada prontamente em tempos de aflição.",
+        "summary": "Deus quer nos ajudar.",
+        "topic": "DEUS",
+        "truthId": 13
+      },
+      {
+        "ref": "Salmo 145:18, 19",
+        "text": "Jeová está perto de todos os que o invocam, De todos os que o invocam em verdade. ר [rexe] Ele satisfaz o desejo dos que o temem; Ouve o seu clamor por ajuda e os livra.",
+        "summary": "Deus quer nos ajudar.",
+        "topic": "DEUS",
+        "truthId": 13
+      },
+      {
+        "ref": "Salmo 62:8",
+        "text": "Confie sempre nele, ó povo. Derramem o coração diante dele. Deus é um refúgio para nós. (Selá)",
+        "summary": "Deus quer que oremos a ele.",
+        "topic": "ORAÇÃO",
+        "truthId": 14
+      },
+      {
+        "ref": "Salmo 65:2",
+        "text": "Ó Ouvinte de oração, a ti virão pessoas de todo tipo.",
+        "summary": "Deus quer que oremos a ele.",
+        "topic": "ORAÇÃO",
+        "truthId": 14
+      },
+      {
+        "ref": "1 Pedro 5:7",
+        "text": "ao passo que lançam sobre ele toda a sua ansiedade, porque ele cuida de vocês.",
+        "summary": "Deus quer que oremos a ele.",
+        "topic": "ORAÇÃO",
+        "truthId": 14
+      },
+      {
+        "ref": "Mateus 6:7-13",
+        "text": "Quando orar, não diga as mesmas coisas vez após vez, como fazem as pessoas das nações, pois imaginam que serão ouvidas por usarem muitas palavras. Não sejam como elas, porque o seu Pai sabe do que vocês necessitam, antes mesmo de lhe pedirem. “Portanto, orem do seguinte modo: “‘Pai nosso, que estás nos céus, santificado seja o teu nome. Venha o teu Reino. Seja feita a tua vontade, como no céu, assim também na terra. Dá-nos hoje o nosso pão para este dia; e perdoa-nos as nossas dívidas, assim como nós também perdoamos os nossos devedores. E não nos leves à tentação, mas livra-nos do Maligno.’",
+        "summary": "A Bíblia nos ensina a orar.",
+        "topic": "ORAÇÃO",
+        "truthId": 15
+      },
+      {
+        "ref": "Lucas 11:1-4",
+        "text": "Numa ocasião, ele estava em certo lugar orando e, quando parou, um dos seus discípulos lhe disse: “Senhor, ensine-nos a orar, como também João ensinou os discípulos dele.” Ele lhes disse então: “Sempre que orarem, digam: ‘Pai, santificado seja o teu nome. Venha o teu Reino. Dá-nos o nosso pão cada dia, segundo as nossas necessidades diárias. E perdoa-nos os nossos pecados, pois nós mesmos também perdoamos a todo aquele que está em dívida conosco; e não nos leves à tentação.’”",
+        "summary": "A Bíblia nos ensina a orar.",
+        "topic": "ORAÇÃO",
+        "truthId": 15
+      },
+      {
+        "ref": "Mateus 7:7, 8",
+        "text": "“Persistam em pedir, e lhes será dado; persistam em buscar, e acharão; persistam em bater, e lhes será aberto; pois todo aquele que pede, recebe; e todo aquele que busca, acha; e a todo aquele que bate, se abrirá.",
+        "summary": "Devemos orar com frequência.",
+        "topic": "ORAÇÃO",
+        "truthId": 16
+      },
+      {
+        "ref": "1 Tessalonicenses 5:17",
+        "text": "Orem constantemente.",
+        "summary": "Devemos orar com frequência.",
+        "topic": "ORAÇÃO",
+        "truthId": 16
+      },
+      {
+        "ref": "Mateus 6:14, 15",
+        "text": "“Pois, se vocês perdoarem aos homens as falhas deles, o seu Pai celestial também perdoará vocês; ao passo que, se não perdoarem aos homens as falhas deles, o seu Pai também não perdoará as falhas de vocês.",
+        "summary": "Jesus foi um grande instrutor, e seus conselhos sempre funcionam.",
+        "topic": "JESUS",
+        "truthId": 17
+      },
+      {
+        "ref": "Mateus 6:34",
+        "text": "Portanto, nunca fiquem ansiosos por causa do amanhã, pois o amanhã terá suas próprias ansiedades. Bastam a cada dia suas próprias dificuldades.",
+        "summary": "Jesus foi um grande instrutor, e seus conselhos sempre funcionam.",
+        "topic": "JESUS",
+        "truthId": 17
+      },
+      {
+        "ref": "Mateus 7:12",
+        "text": "“Portanto, todas as coisas que querem que os homens façam a vocês, façam também a eles. De fato, isso é o que a Lei e os Profetas querem dizer.",
+        "summary": "Jesus foi um grande instrutor, e seus conselhos sempre funcionam.",
+        "topic": "JESUS",
+        "truthId": 17
+      },
+      {
+        "ref": "Mateus 24:3",
+        "text": "Enquanto ele estava sentado no monte das Oliveiras, os discípulos se aproximaram dele em particular e disseram: “Diga-nos: Quando acontecerão essas coisas e qual será o sinal da sua presença e do final do sistema de coisas?”",
+        "summary": "Jesus predisse os acontecimentos que vemos hoje.",
+        "topic": "JESUS",
+        "truthId": 18
+      },
+      {
+        "ref": "Mateus 24:7, 8",
+        "text": "“Porque nação se levantará contra nação e reino contra reino; haverá falta de alimentos e terremotos num lugar após outro. Todas essas coisas são um começo das dores de aflição.",
+        "summary": "Jesus predisse os acontecimentos que vemos hoje.",
+        "topic": "JESUS",
+        "truthId": 18
+      },
+      {
+        "ref": "Mateus 24:14",
+        "text": "E estas boas novas do Reino serão pregadas em toda a terra habitada, em testemunho a todas as nações, e então virá o fim.",
+        "summary": "Jesus predisse os acontecimentos que vemos hoje.",
+        "topic": "JESUS",
+        "truthId": 18
+      },
+      {
+        "ref": "Lucas 21:10, 11",
+        "text": "Então lhes disse: “Nação se levantará contra nação e reino contra reino. Haverá grandes terremotos e, num lugar após outro, falta de alimentos e pestilências; e as pessoas verão coisas atemorizantes e grandes sinais do céu.",
+        "summary": "Jesus predisse os acontecimentos que vemos hoje.",
+        "topic": "JESUS",
+        "truthId": 18
+      },
+      {
+        "ref": "Mateus 16:16",
+        "text": "Simão Pedro respondeu: “O senhor é o Cristo, o Filho do Deus vivente.”",
+        "summary": "Jesus é o Filho de Deus.",
+        "topic": "JESUS",
+        "truthId": 19
+      },
+      {
+        "ref": "João 3:16",
+        "text": "“Porque Deus amou tanto o mundo, que deu o seu Filho unigênito, para que todo aquele que nele exercer fé não seja destruído, mas tenha vida eterna.",
+        "summary": "Jesus é o Filho de Deus.",
+        "topic": "JESUS",
+        "truthId": 19
+      },
+      {
+        "ref": "1 João 4:15",
+        "text": "Quem reconhece que Jesus é Filho de Deus, com ele Deus permanece em união, e ele em união com Deus.",
+        "summary": "Jesus é o Filho de Deus.",
+        "topic": "JESUS",
+        "truthId": 19
+      },
+      {
+        "ref": "João 14:28",
+        "text": "Vocês ouviram que eu lhes disse: ‘Vou embora e vou voltar para vocês.’ Se vocês me amassem, se alegrariam de que vou para o Pai, pois o Pai é maior do que eu.",
+        "summary": "Jesus não é o Deus Todo-Poderoso.",
+        "topic": "JESUS",
+        "truthId": 20
+      },
+      {
+        "ref": "1 Coríntios 11:3",
+        "text": "Mas quero que saibam que o cabeça de todo homem é o Cristo; o cabeça da mulher é o homem; e o cabeça do Cristo é Deus.",
+        "summary": "Jesus não é o Deus Todo-Poderoso.",
+        "topic": "JESUS",
+        "truthId": 20
+      },
+      {
+        "ref": "Daniel 2:44",
+        "text": "“Nos dias desses reis, o Deus do céu estabelecerá um reino que jamais será destruído. E esse reino não passará para as mãos de nenhum outro povo. Vai esmigalhar e pôr um fim a todos esses reinos, e somente ele permanecerá para sempre,",
+        "summary": "O Reino de Deus é um governo de verdade lá no céu.",
+        "topic": "REINO DE DEUS",
+        "truthId": 21
+      },
+      {
+        "ref": "Daniel 7:13, 14",
+        "text": "“Continuei olhando nas visões da noite e vi alguém parecido com um filho de homem vir com as nuvens dos céus; ele obteve acesso ao Antigo de Dias e foi conduzido à sua presença. E foi-lhe dado domínio, honra e um reino, para que os povos, nações e línguas o servissem. Seu domínio é um domínio eterno, que jamais terminará, e seu reino não será destruído.",
+        "summary": "O Reino de Deus é um governo de verdade lá no céu.",
+        "topic": "REINO DE DEUS",
+        "truthId": 21
+      },
+      {
+        "ref": "Mateus 6:9, 10",
+        "text": "“Portanto, orem do seguinte modo: “‘Pai nosso, que estás nos céus, santificado seja o teu nome. Venha o teu Reino. Seja feita a tua vontade, como no céu, assim também na terra.",
+        "summary": "O Reino de Deus é um governo de verdade lá no céu.",
+        "topic": "REINO DE DEUS",
+        "truthId": 21
+      },
+      {
+        "ref": "Apocalipse 11:15",
+        "text": "O sétimo anjo tocou a sua trombeta. E houve vozes altas no céu, dizendo: “O reino do mundo se tornou o Reino do nosso Senhor e do seu Cristo, e Ele reinará para todo o sempre.”",
+        "summary": "O Reino de Deus é um governo de verdade lá no céu.",
+        "topic": "REINO DE DEUS",
+        "truthId": 21
+      },
+      {
+        "ref": "Salmo 2:7-9",
+        "text": "Proclamarei o decreto de Jeová; Ele me disse: “Você é meu filho; Hoje eu me tornei seu pai. Peça-me, e eu lhe darei nações como herança E os confins da terra como sua propriedade. Você as quebrará com um cetro de ferro, E as despedaçará como a um vaso de barro.”",
+        "summary": "O Reino de Deus vai substituir os governos humanos.",
+        "topic": "REINO DE DEUS",
+        "truthId": 22
+      },
+      {
+        "ref": "Daniel 2:44",
+        "text": "“Nos dias desses reis, o Deus do céu estabelecerá um reino que jamais será destruído. E esse reino não passará para as mãos de nenhum outro povo. Vai esmigalhar e pôr um fim a todos esses reinos, e somente ele permanecerá para sempre,",
+        "summary": "O Reino de Deus vai substituir os governos humanos.",
+        "topic": "REINO DE DEUS",
+        "truthId": 22
+      },
+      {
+        "ref": "Salmo 37:10, 11",
+        "text": "Apenas mais um pouco, e os maus deixarão de existir; Você olhará para onde estavam, E eles não estarão lá. Mas os mansos possuirão a terra E terão grande alegria na abundância de paz.",
+        "summary": "O Reino de Deus é a única solução para os problemas da humanidade.",
+        "topic": "REINO DE DEUS",
+        "truthId": 23
+      },
+      {
+        "ref": "Salmo 46:9",
+        "text": "Ele põe fim às guerras em toda a terra. Quebra o arco e despedaça a lança, Queima as carroças militares no fogo.",
+        "summary": "O Reino de Deus é a única solução para os problemas da humanidade.",
+        "topic": "REINO DE DEUS",
+        "truthId": 23
+      },
+      {
+        "ref": "Isaías 65:21-23",
+        "text": "Eles construirão casas e morarão nelas; Plantarão vinhedos e comerão os seus frutos. Não construirão para outro morar, Nem plantarão para outros comerem. Pois os dias do meu povo serão como os dias de uma árvore, E meus escolhidos tirarão pleno proveito do trabalho das suas mãos. Não trabalharão arduamente em vão, Nem darão à luz filhos que sofrerão calamidade, Porque eles e seus filhos São a descendência abençoada por Jeová.",
+        "summary": "O Reino de Deus é a única solução para os problemas da humanidade.",
+        "topic": "REINO DE DEUS",
+        "truthId": 23
+      },
+      {
+        "ref": "Deuteronômio 32:4",
+        "text": "A Rocha — perfeito é tudo o que ele faz, Pois todos os seus caminhos são justos. Deus de fidelidade, que nunca é injusto; Justo e reto é ele.",
+        "summary": "Deus não causa nosso sofrimento.",
+        "topic": "SOFRIMENTO",
+        "truthId": 24
+      },
+      {
+        "ref": "Tiago 1:13",
+        "text": "Quando estiver sob provação, que ninguém diga: “Estou sendo provado por Deus.” Pois, com coisas más, Deus não pode ser provado, nem prova a ninguém.",
+        "summary": "Deus não causa nosso sofrimento.",
+        "topic": "SOFRIMENTO",
+        "truthId": 24
+      },
+      {
+        "ref": "Lucas 4:5, 6",
+        "text": "Assim ele o levou para cima e lhe mostrou todos os reinos da terra habitada, num instante. Então, o Diabo lhe disse: “Eu lhe darei toda esta autoridade, bem como a glória destes reinos, porque ela me foi entregue e a dou a quem eu quiser.",
+        "summary": "Satanás governa este mundo.",
+        "topic": "SOFRIMENTO",
+        "truthId": 25
+      },
+      {
+        "ref": "1 João 5:19",
+        "text": "Sabemos que nos originamos de Deus, mas o mundo inteiro está no poder do Maligno.",
+        "summary": "Satanás governa este mundo.",
+        "topic": "SOFRIMENTO",
+        "truthId": 25
+      },
+      {
+        "ref": "Salmo 34:17-19",
+        "text": "Eles clamaram, e Jeová ouviu; Ele os livrou de todas as suas aflições. ק [cofe] Jeová está perto dos que têm coração quebrantado, Ele salva os que têm espírito esmagado. ר [rexe] Muitas são as dificuldades do justo, Mas Jeová o livra de todas elas.",
+        "summary": "Deus vê quando você sofre e quer ajudar.",
+        "topic": "SOFRIMENTO",
+        "truthId": 26
+      },
+      {
+        "ref": "Isaías 41:10",
+        "text": "Não tenha medo, pois estou com você. Não fique ansioso, pois eu sou o seu Deus. Vou fortalecê-lo, sim, vou ajudá-lo. Vou segurá-lo firmemente com a minha mão direita de justiça.’",
+        "summary": "Deus vê quando você sofre e quer ajudar.",
+        "topic": "SOFRIMENTO",
+        "truthId": 26
+      },
+      {
+        "ref": "Isaías 41:13",
+        "text": "Pois eu, Jeová, seu Deus, seguro a sua mão direita; Sou aquele que lhe diz: ‘Não tenha medo. Eu o ajudarei.’",
+        "summary": "Deus vê quando você sofre e quer ajudar.",
+        "topic": "SOFRIMENTO",
+        "truthId": 26
+      },
+      {
+        "ref": "Isaías 65:17",
+        "text": "Pois vejam! Crio novos céus e uma nova terra; E as coisas anteriores não serão lembradas, Nem voltarão ao coração.",
+        "summary": "Em breve, Deus vai acabar com o sofrimento.",
+        "topic": "SOFRIMENTO",
+        "truthId": 27
+      },
+      {
+        "ref": "Apocalipse 21:3, 4",
+        "text": "Então ouvi uma voz alta do trono dizer: “Veja! A tenda de Deus está com a humanidade; ele residirá com eles, e eles serão o seu povo. O próprio Deus estará com eles. Ele enxugará dos seus olhos toda lágrima, e não haverá mais morte, nem haverá mais tristeza, nem choro, nem dor. As coisas anteriores já passaram.”",
+        "summary": "Em breve, Deus vai acabar com o sofrimento.",
+        "topic": "SOFRIMENTO",
+        "truthId": 27
+      },
+      {
+        "ref": "Eclesiastes 9:5",
+        "text": "Pois os vivos sabem que morrerão, mas os mortos não sabem absolutamente nada, nem têm mais recompensa, porque toda lembrança deles caiu no esquecimento.",
+        "summary": "Os mortos estão inconscientes; eles não estão sofrendo.",
+        "topic": "MORTE",
+        "truthId": 28
+      },
+      {
+        "ref": "João 11:11-14",
+        "text": "Depois de dizer isso, ele acrescentou: “Lázaro, nosso amigo, adormeceu, mas eu vou lá para acordá-lo.” Então os discípulos lhe disseram: “Senhor, se ele está dormindo, ficará bom.” Jesus, no entanto, havia falado da morte dele; mas eles imaginavam que estivesse falando do sono natural. Então, Jesus lhes disse claramente: “Lázaro morreu;",
+        "summary": "Os mortos estão inconscientes; eles não estão sofrendo.",
+        "topic": "MORTE",
+        "truthId": 28
+      },
+      {
+        "ref": "Salmo 146:4",
+        "text": "Seu espírito sai, e eles voltam ao solo; Nesse mesmo dia os seus pensamentos se acabam.",
+        "summary": "Os mortos não podem nos ajudar nem nos prejudicar.",
+        "topic": "MORTE",
+        "truthId": 29
+      },
+      {
+        "ref": "Eclesiastes 9:6",
+        "text": "Também seu amor, seu ódio e seu ciúme já não existem, e eles não têm mais parte em nada do que se faz debaixo do sol.",
+        "summary": "Os mortos não podem nos ajudar nem nos prejudicar.",
+        "topic": "MORTE",
+        "truthId": 29
+      },
+      {
+        "ref": "Eclesiastes 9:10",
+        "text": "Tudo o que a sua mão achar para fazer, faça-o com toda a sua força, pois não há trabalho, nem planejamento, nem conhecimento, nem sabedoria na Sepultura, o lugar para onde você vai.",
+        "summary": "Os mortos não podem nos ajudar nem nos prejudicar.",
+        "topic": "MORTE",
+        "truthId": 29
+      },
+      {
+        "ref": "Jó 14:13-15",
+        "text": "Quem dera que me escondesses na Sepultura, Que me ocultasses até a tua ira passar, Que estabelecesses um tempo e então te lembrasses de mim! Quando um homem morre, pode ele viver novamente? Esperarei todos os dias do meu serviço obrigatório, Até vir o meu livramento. Tu chamarás, e eu te responderei. Terás saudades do trabalho das tuas mãos.",
+        "summary": "Pessoas amadas que já morreram serão ressuscitadas.",
+        "topic": "MORTE",
+        "truthId": 30
+      },
+      {
+        "ref": "João 5:28, 29",
+        "text": "Não fiquem admirados com isso, pois vem a hora em que todos os que estão nos túmulos memoriais ouvirão a voz dele e sairão: os que fizeram coisas boas, para uma ressurreição de vida; e os que praticaram coisas ruins, para uma ressurreição de julgamento.",
+        "summary": "Pessoas amadas que já morreram serão ressuscitadas.",
+        "topic": "MORTE",
+        "truthId": 30
+      },
+      {
+        "ref": "Atos 24:15",
+        "text": "E eu tenho esperança em Deus, esperança que esses homens também têm, de que haverá uma ressurreição tanto de justos como de injustos.",
+        "summary": "Pessoas amadas que já morreram serão ressuscitadas.",
+        "topic": "MORTE",
+        "truthId": 30
+      },
+      {
+        "ref": "Apocalipse 21:3, 4",
+        "text": "Então ouvi uma voz alta do trono dizer: “Veja! A tenda de Deus está com a humanidade; ele residirá com eles, e eles serão o seu povo. O próprio Deus estará com eles. Ele enxugará dos seus olhos toda lágrima, e não haverá mais morte, nem haverá mais tristeza, nem choro, nem dor. As coisas anteriores já passaram.”",
+        "summary": "“Não haverá mais morte.”",
+        "topic": "MORTE",
+        "truthId": 31
+      },
+      {
+        "ref": "Isaías 25:8",
+        "text": "Ele acabará com a morte para sempre, E o Soberano Senhor Jeová enxugará as lágrimas de todo rosto. Ele tirará de toda a terra a humilhação de seu povo, Pois o próprio Jeová falou isso.",
+        "summary": "“Não haverá mais morte.”",
+        "topic": "MORTE",
+        "truthId": 31
+      },
+      {
+        "ref": "Jeremias 7:11",
+        "text": "Será que esta casa que leva o meu nome se tornou um abrigo de ladrões aos seus olhos? Saibam que eu mesmo estou vendo isso”, diz Jeová.",
+        "summary": "Nem todas as religiões agradam a Deus.",
+        "topic": "RELIGIÃO",
+        "truthId": 32
+      },
+      {
+        "ref": "Mateus 7:13, 14",
+        "text": "“Entrem pelo portão estreito, porque largo é o portão e espaçosa é a estrada que conduz à destruição, e muitos entram por ele; ao passo que estreito é o portão e apertada a estrada que conduz à vida, e poucos a acham.",
+        "summary": "Nem todas as religiões agradam a Deus.",
+        "topic": "RELIGIÃO",
+        "truthId": 32
+      },
+      {
+        "ref": "Mateus 7:21-23",
+        "text": "“Nem todo o que me disser: ‘Senhor, Senhor’, entrará no Reino dos céus, mas apenas aquele que fizer a vontade do meu Pai, que está nos céus. Muitos me dirão naquele dia: ‘Senhor, Senhor, não profetizamos em seu nome, não expulsamos demônios em seu nome e não fizemos muitas obras poderosas em seu nome?’ Mas eu lhes declararei, então: ‘Nunca os conheci! Afastem-se de mim, vocês que fazem o que é contra a lei!’",
+        "summary": "Nem todas as religiões agradam a Deus.",
+        "topic": "RELIGIÃO",
+        "truthId": 32
+      },
+      {
+        "ref": "Isaías 29:13",
+        "text": "Jeová diz: “Este povo se aproxima de mim com a boca E me honra com os lábios, Mas o seu coração está muito longe de mim; E a adoração que me prestam se baseia em regras de homens, que lhes foram ensinadas.",
+        "summary": "Deus odeia a hipocrisia.",
+        "topic": "RELIGIÃO",
+        "truthId": 33
+      },
+      {
+        "ref": "Miqueias 3:11",
+        "text": "Os líderes dela julgam por suborno, Seus sacerdotes instruem por um preço, E seus profetas praticam adivinhação por dinheiro. E ainda assim se apoiam em Jeová, dizendo: “Não está Jeová conosco? Nenhuma calamidade virá sobre nós.”",
+        "summary": "Deus odeia a hipocrisia.",
+        "topic": "RELIGIÃO",
+        "truthId": 33
+      },
+      {
+        "ref": "Marcos 7:6-8",
+        "text": "Ele lhes disse: “Isaías profetizou apropriadamente a respeito de vocês, hipócritas, como está escrito: ‘Este povo me honra com os lábios, mas seu coração está muito longe de mim. É em vão que continuam a me adorar, pois ensinam as regras de homens como doutrinas.’ Vocês abandonam o mandamento de Deus e se apegam à tradição de homens.”",
+        "summary": "Deus odeia a hipocrisia.",
+        "topic": "RELIGIÃO",
+        "truthId": 33
+      },
+      {
+        "ref": "Miqueias 4:3",
+        "text": "Ele fará julgamento entre muitos povos E resolverá as questões referentes a poderosas nações distantes. Eles transformarão as suas espadas em arados, E as suas lanças em podadeiras. Nação não levantará espada contra nação, Nem aprenderão mais a guerra.",
+        "summary": "O amor identifica a religião verdadeira.",
+        "topic": "RELIGIÃO",
+        "truthId": 34
+      },
+      {
+        "ref": "João 13:34, 35",
+        "text": "Eu lhes dou um novo mandamento: Amem uns aos outros; assim como eu amei vocês, amem também uns aos outros. Por meio disto todos saberão que vocês são meus discípulos: se tiverem amor entre si.”",
+        "summary": "O amor identifica a religião verdadeira.",
+        "topic": "RELIGIÃO",
+        "truthId": 34
+      }
+    ]
+  },
+  "pt-PT": {
     "appendixTitle": "Verdades que gostamos muito de ensinar",
     "topics": [
       "FUTURO",
