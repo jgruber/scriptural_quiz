@@ -5,6 +5,13 @@ in the **"Truths We Love to Teach"** section (Appendix A) of *Love People—Make
 Disciples*. All scriptural text is quoted from the **New World Translation of the
 Holy Scriptures (Study Edition)**.
 
+The app is available in **six languages** — English, Spanish, German, Polish,
+Italian, and Portuguese. The interface language defaults to the browser's
+preference and can be changed at any time from the selector on the home screen.
+None of the content is machine-translated: every topic, truth, and verse is taken
+verbatim from the corresponding jw.org publication in that language (see
+[Data source](#data-source)).
+
 It's a single-page app — pure HTML, Tailwind CSS, and vanilla JavaScript, with no
 build step and no backend. It runs entirely in the browser and can be hosted as a
 static site (e.g. GitHub Pages).
@@ -22,9 +29,8 @@ worker caches the app shell so it keeps working offline after the first visit.
    - **Answer timer** — Off, 10s, 20s, or 30s per question.
 3. Players take turns on a single device (round-robin). A "pass the device"
    screen keeps the next player from seeing the previous answer.
-4. Each question is one of two kinds:
-   - **Name the scripture** — read the passage, then pick the correct citation.
-   - **Name the truth** — read the passage, then pick the truth it teaches.
+4. Choose which of the four question types are in play (each question picks a
+   random enabled type).
 5. After every player has answered, a ranked scoreboard declares the winner.
    Recent games are saved locally in your browser.
 
@@ -39,12 +45,14 @@ A correct answer earns **100 base points**, plus bonuses:
 The scoreboard ranks players by total points and shows each player's accuracy
 and best streak.
 
-## The two question types
+## The four question types
 
 | Type | You see | You choose from |
 |------|---------|-----------------|
-| Name the scripture | The scriptural text | 4 scripture references |
-| Name the truth | The scriptural text | 4 truth summaries |
+| 📖 Name the scripture | The scriptural text | 4 scripture references |
+| 🔎 Match the passage | A scripture reference | 4 passages |
+| 🏷️ Name the topic | A scripture reference | 4 topics |
+| 💡 Name the truth | The scriptural text | 4 truth summaries |
 
 ## Running it
 
@@ -76,8 +84,9 @@ Once installed it launches full-screen from its own icon and works offline.
 
 ```
 index.html            App shell, Tailwind config, mobile meta tags, PWA links
-app.js                Game logic: setup, question generation, turns, scoring, results
-data.js               window.QUIZ_DATA — topics, truths, and 85 scriptures (NWT Study Edition)
+app.js                Game logic: language handling, question generation, turns, scoring
+data.js               window.QUIZ_DATA_BY_LANG — per-language topics, truths, and 85 scriptures
+i18n.js               window.QUIZ_I18N / QUIZ_LANGS — interface strings for the six languages
 manifest.webmanifest  PWA metadata (name, icons, theme) for installation
 sw.js                 Service worker — caches the app shell for offline use
 icon.svg              Source artwork for the app icons
@@ -88,12 +97,22 @@ apple-touch-icon.png  Home-screen icon for iOS
 
 ## Data source
 
-The dataset is extracted from the "Truths We Love to Teach" appendix:
-**9 topics**, **34 truths**, and **85 scripture citations** with their full
-New World Translation (Study Edition) text.
+Each language's dataset is extracted from the "Truths We Love to Teach" appendix
+of the jw.org brochure *Love People—Make Disciples* (`lmd`): **9 topics**,
+**34 truths**, and **85 scripture citations** with their full New World
+Translation (Study Edition) text — the same structure in every language.
 
-Topics: The Future · Family · God · Prayer · Jesus · God's Kingdom · Suffering ·
-Death · Religion.
+| Language | Source |
+|----------|--------|
+| English, Spanish, German, Italian, Portuguese | The Study-Edition **EPUB** for each language (its Appendix A embeds the verse text in footnotes) |
+| Polish | The **Watchtower Online Library** (`wol.jw.org`), since no Study-Edition EPUB is published in Polish — the appendix supplies topics/truths/references and each verse is read from WOL's bible-citation endpoint |
+
+Nothing is translated by the app; every string of scriptural content is the
+official jw.org wording for that language. Portuguese uses the European
+Portuguese (Portugal) edition.
+
+Topics (English): The Future · Family · God · Prayer · Jesus · God's Kingdom ·
+Suffering · Death · Religion.
 
 ---
 

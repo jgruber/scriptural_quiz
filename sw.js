@@ -9,7 +9,7 @@
  */
 "use strict";
 
-const CACHE = "scripture-quiz-v5";
+const CACHE = "scripture-quiz-v6";
 
 // App shell, relative to the service worker's scope.
 const ASSETS = [
@@ -17,6 +17,7 @@ const ASSETS = [
   "./index.html",
   "./app.js",
   "./data.js",
+  "./i18n.js",
   "./manifest.webmanifest",
   "./icon-192.png",
   "./icon-512.png",

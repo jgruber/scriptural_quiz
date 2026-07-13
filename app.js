@@ -1,6 +1,7 @@
 /* Scripture Quiz — "Truths We Love to Teach" (Appendix A)
  * Pass-and-play multiplayer quiz over NWT Study Edition scriptures.
- * Vanilla JS, no build step. Data is provided by data.js (window.QUIZ_DATA).
+ * Vanilla JS, no build step. Scriptural data per language comes from data.js
+ * (window.QUIZ_DATA_BY_LANG) and UI strings from i18n.js (window.QUIZ_I18N).
  *
  * Features: topic filter, per-question timer with speed + streak bonuses,
  * and per-player question categories (scripture / truth / mixed).
@@ -8,8 +9,60 @@
 (function () {
   "use strict";
 
-  const DATA = window.QUIZ_DATA;
   const app = document.getElementById("app");
+
+  // ----- language / i18n -----
+  const LANGS = window.QUIZ_LANGS;
+  const LANG_CODES = LANGS.map((l) => l.code);
+  const LS_LANG = "sq_lang";
+
+  // Preference order: saved choice -> browser languages -> English.
+  function detectLang() {
+    try {
+      const saved = localStorage.getItem(LS_LANG);
+      if (saved && LANG_CODES.includes(saved)) return saved;
+    } catch (e) { /* storage unavailable */ }
+    const prefs = (navigator.languages && navigator.languages.length)
+      ? navigator.languages : [navigator.language || "en"];
+    for (const p of prefs) {
+      const base = String(p).toLowerCase().split("-")[0];
+      if (LANG_CODES.includes(base)) return base;
+    }
+    return "en";
+  }
+
+  let lang = detectLang();
+  // The active language's data + strings. Reassigned when the user switches.
+  let DATA = window.QUIZ_DATA_BY_LANG[lang];
+  let t = window.QUIZ_I18N[lang];
+  document.documentElement.lang = lang;
+
+  function setLang(code) {
+    if (!LANG_CODES.includes(code)) return;
+    lang = code;
+    DATA = window.QUIZ_DATA_BY_LANG[lang];
+    t = window.QUIZ_I18N[lang];
+    document.documentElement.lang = lang;
+    recomputePools();
+    updateChrome();
+    try { localStorage.setItem(LS_LANG, lang); } catch (e) { /* ignore */ }
+  }
+
+  // Fill {placeholders} in a catalog string.
+  function fmt(str, vars) {
+    return String(str).replace(/\{(\w+)\}/g, (m, k) =>
+      vars && k in vars ? vars[k] : m);
+  }
+
+  // Localize the persistent page chrome (title + footer) outside #app.
+  function updateChrome() {
+    document.title = t.appName;
+    const footer = document.getElementById("appFooter");
+    if (footer) {
+      const line = escapeHtml(fmt(t.footerScriptures, { nwt: t.nwt }));
+      footer.innerHTML = `${line} &middot; &ldquo;${escapeHtml(DATA.appendixTitle)}&rdquo; (${escapeHtml(t.appendixLabel)})`;
+    }
+  }
 
   // ----- scoring -----
   const BASE_POINTS = 100;   // for a correct answer
@@ -62,26 +115,38 @@
     }[c]));
   }
 
-  function niceTopic(t) {
-    return t.split(" ").map((w) => w.charAt(0) + w.slice(1).toLowerCase()).join(" ");
+  // Title-case an ALL-CAPS topic for display, but leave grammatical connectors
+  // ("de", "di", "la", …) lowercase so Romance-language topics read naturally
+  // (e.g. "Reino de Deus", not "Reino De Deus"). These words never lead a topic
+  // and don't occur in the German/English/Polish topics, so nothing else shifts.
+  const TOPIC_CONNECTORS = new Set(["de", "del", "di", "do", "da", "la", "el", "e", "y", "i"]);
+  function niceTopic(topic) {
+    return topic.split(" ").map((w, idx) => {
+      const lower = w.toLowerCase();
+      if (idx > 0 && TOPIC_CONNECTORS.has(lower)) return lower;
+      return w.charAt(0) + w.slice(1).toLowerCase();
+    }).join(" ");
   }
 
   // The kinds of question the quiz can ask. Players choose which are in play
   // (via checkboxes on the setup screen); each question picks a random enabled
   // kind. Order here is the display order on the setup screen.
-  const QTYPES = [
-    { key: "ref", label: "📖 Name the scripture", hint: "See the passage, pick the reference" },
-    { key: "passage", label: "🔎 Match the passage", hint: "See the reference, pick the passage" },
-    { key: "topic", label: "🏷️ Name the topic", hint: "See the reference, pick the topic" },
-    { key: "meaning", label: "💡 Name the truth", hint: "See the passage, pick the truth" },
-  ];
-  const QTYPE_KEYS = QTYPES.map((t) => t.key);
+  // Question kinds and their emoji; labels + hints come from the i18n catalog.
+  const QTYPE_KEYS = ["ref", "passage", "topic", "meaning"];
+  const QTYPE_EMOJI = { ref: "📖", passage: "🔎", topic: "🏷️", meaning: "💡" };
+  const qtypeLabel = (key) => `${QTYPE_EMOJI[key]} ${t.typeLabels[key]}`;
+  const qtypeHint = (key) => t.typeHints[key];
 
   // ----- question generation -----
-  const ALL_REFS = uniq(DATA.scriptures.map((s) => s.ref));
-  const ALL_SUMMARIES = uniq(DATA.scriptures.map((s) => s.summary));
-  const ALL_TEXTS = uniq(DATA.scriptures.map((s) => s.text));
-  const ALL_TOPICS = uniq(DATA.scriptures.map((s) => s.topic));
+  // Global distractor pools for the active language; recomputed on a switch.
+  let ALL_REFS, ALL_SUMMARIES, ALL_TEXTS, ALL_TOPICS;
+  function recomputePools() {
+    ALL_REFS = uniq(DATA.scriptures.map((s) => s.ref));
+    ALL_SUMMARIES = uniq(DATA.scriptures.map((s) => s.summary));
+    ALL_TEXTS = uniq(DATA.scriptures.map((s) => s.text));
+    ALL_TOPICS = uniq(DATA.scriptures.map((s) => s.topic));
+  }
+  recomputePools();
 
   // Pick `count` distinct distractors, preferring the (topic-filtered) pool and
   // falling back to the global pool so there are always enough options.
@@ -101,31 +166,29 @@
   }
 
   function buildQuestion(scripture, type, pools) {
-    let prompt, correct, pool, globalPool;
+    // The prompt text is looked up from the catalog at render time (by type),
+    // so a question stays correct even if the language changes between games.
+    let correct, pool, globalPool;
     if (type === "ref") {
       // clue = passage text, options = references
-      prompt = "Which scripture is this passage from?";
       correct = scripture.ref;
       pool = pools.ref; globalPool = ALL_REFS;
     } else if (type === "passage") {
       // clue = reference, options = passage texts (reverse of "ref")
-      prompt = "Which passage is this scripture?";
       correct = scripture.text;
       pool = pools.text; globalPool = ALL_TEXTS;
     } else if (type === "topic") {
       // clue = reference, options = topics
-      prompt = "What topic does this scripture cover?";
       correct = scripture.topic;
       pool = pools.topic; globalPool = ALL_TOPICS;
     } else {
       // clue = passage text, options = truth summaries
-      prompt = "What truth does this scripture teach?";
       correct = scripture.summary;
       pool = pools.summary; globalPool = ALL_SUMMARIES;
     }
     const distractors = pickDistractors(pool, globalPool, correct, 3);
     const options = shuffle([correct, ...distractors]);
-    return { type, prompt, scripture, options, correctIndex: options.indexOf(correct) };
+    return { type, scripture, options, correctIndex: options.indexOf(correct) };
   }
 
   // Round-robin schedule honoring the enabled question types and topic filter.
@@ -191,7 +254,7 @@
     const savedPlayers = load(LS_PLAYERS, null);
     let players = Array.isArray(savedPlayers) && savedPlayers.length
       ? savedPlayers.map((p) => ({ name: typeof p === "string" ? p : p.name }))
-      : [{ name: "Player 1" }, { name: "Player 2" }];
+      : [{ name: t.player + " 1" }, { name: t.player + " 2" }];
 
     const settings = load(LS_SETTINGS, {});
     let perPlayer = settings.perPlayer || 8;
@@ -208,76 +271,87 @@
     function draw() {
       const history = load(LS_HISTORY, []);
       render(`
-        <header class="pt-6 pb-4 text-center">
+        <div class="flex justify-end pt-2">
+          <label class="sr-only" for="langSel">${escapeHtml(t.languageLabel)}</label>
+          <select id="langSel" aria-label="${escapeHtml(t.languageLabel)}" class="rounded-lg border border-slate-200 bg-white px-2.5 py-1.5 text-xs font-medium text-slate-600 shadow-sm focus:border-indigo-400 focus:outline-none">
+            ${LANGS.map((l) => `<option value="${l.code}" ${l.code === lang ? "selected" : ""}>${escapeHtml(l.name)}</option>`).join("")}
+          </select>
+        </div>
+        <header class="pt-2 pb-4 text-center">
           <div class="text-5xl">📖</div>
-          <h1 class="mt-3 text-2xl font-bold text-slate-900">Scripture Quiz</h1>
-          <p class="mt-1 text-sm text-slate-500">Truths We Love to Teach &middot; Appendix A</p>
+          <h1 class="mt-3 text-2xl font-bold text-slate-900">${escapeHtml(t.appName)}</h1>
+          <p class="mt-1 text-sm text-slate-500">${escapeHtml(DATA.appendixTitle)} &middot; ${escapeHtml(t.appendixLabel)}</p>
         </header>
 
         <section class="rounded-2xl bg-white p-5 shadow-sm ring-1 ring-slate-200">
           <div class="flex items-center justify-between">
-            <h2 class="text-sm font-semibold uppercase tracking-wide text-slate-500">Players</h2>
-            <span class="text-xs text-slate-400">pass &amp; play</span>
+            <h2 class="text-sm font-semibold uppercase tracking-wide text-slate-500">${escapeHtml(t.players)}</h2>
+            <span class="text-xs text-slate-400">${escapeHtml(t.passPlay)}</span>
           </div>
           <div id="players" class="mt-3 space-y-2">
             ${players.map((p, i) => playerRow(p, i, players.length)).join("")}
           </div>
           <button id="addPlayer" class="mt-3 w-full rounded-xl border border-dashed border-slate-300 py-2.5 text-sm font-medium text-slate-500 hover:border-indigo-400 hover:text-indigo-600">
-            + Add player
+            ${escapeHtml(t.addPlayer)}
           </button>
         </section>
 
         <section class="mt-4 rounded-2xl bg-white p-5 shadow-sm ring-1 ring-slate-200">
           <div class="flex items-center justify-between">
-            <h2 class="text-sm font-semibold uppercase tracking-wide text-slate-500">Topics</h2>
+            <h2 class="text-sm font-semibold uppercase tracking-wide text-slate-500">${escapeHtml(t.topics)}</h2>
             <div class="text-xs">
-              <button id="topicAll" class="text-indigo-600 hover:underline">All</button>
+              <button id="topicAll" class="text-indigo-600 hover:underline">${escapeHtml(t.all)}</button>
               <span class="text-slate-300">·</span>
-              <button id="topicNone" class="text-indigo-600 hover:underline">None</button>
+              <button id="topicNone" class="text-indigo-600 hover:underline">${escapeHtml(t.none)}</button>
             </div>
           </div>
           <div id="topics" class="mt-3 flex flex-wrap gap-2">
-            ${DATA.topics.map((t) => topicChip(t, selTopics.includes(t))).join("")}
+            ${DATA.topics.map((topic) => topicChip(topic, selTopics.includes(topic))).join("")}
           </div>
-          <p id="topicWarn" class="mt-2 hidden text-xs text-rose-500">Select at least one topic.</p>
+          <p id="topicWarn" class="mt-2 hidden text-xs text-rose-500">${escapeHtml(t.topicWarn)}</p>
         </section>
 
         <section class="mt-4 rounded-2xl bg-white p-5 shadow-sm ring-1 ring-slate-200">
           <div class="flex items-center justify-between">
-            <h2 class="text-sm font-semibold uppercase tracking-wide text-slate-500">Question types</h2>
+            <h2 class="text-sm font-semibold uppercase tracking-wide text-slate-500">${escapeHtml(t.questionTypes)}</h2>
             <div class="text-xs">
-              <button id="typeAll" class="text-indigo-600 hover:underline">All</button>
+              <button id="typeAll" class="text-indigo-600 hover:underline">${escapeHtml(t.all)}</button>
               <span class="text-slate-300">·</span>
-              <button id="typeNone" class="text-indigo-600 hover:underline">None</button>
+              <button id="typeNone" class="text-indigo-600 hover:underline">${escapeHtml(t.none)}</button>
             </div>
           </div>
           <div id="types" class="mt-3 space-y-2">
-            ${QTYPES.map((t) => typeRow(t, selTypes.includes(t.key))).join("")}
+            ${QTYPE_KEYS.map((key) => typeRow(key, selTypes.includes(key))).join("")}
           </div>
-          <p id="typeWarn" class="mt-2 hidden text-xs text-rose-500">Select at least one question type.</p>
+          <p id="typeWarn" class="mt-2 hidden text-xs text-rose-500">${escapeHtml(t.typeWarn)}</p>
         </section>
 
         <section class="mt-4 rounded-2xl bg-white p-5 shadow-sm ring-1 ring-slate-200">
-          <h2 class="text-sm font-semibold uppercase tracking-wide text-slate-500">Questions per player</h2>
+          <h2 class="text-sm font-semibold uppercase tracking-wide text-slate-500">${escapeHtml(t.perPlayer)}</h2>
           <div class="mt-2 flex items-center gap-3">
             <input id="perPlayer" type="range" min="3" max="20" value="${perPlayer}" class="flex-1 accent-indigo-600" />
             <span id="perPlayerVal" class="w-8 text-center font-semibold text-indigo-600">${perPlayer}</span>
           </div>
 
-          <h2 class="mt-5 text-sm font-semibold uppercase tracking-wide text-slate-500">Answer timer</h2>
+          <h2 class="mt-5 text-sm font-semibold uppercase tracking-wide text-slate-500">${escapeHtml(t.answerTimer)}</h2>
           <div id="timer" class="mt-2 grid grid-cols-4 gap-2">
             ${TIMER_OPTIONS.map((o) => `
-              <button class="timer-opt rounded-xl border py-2 text-sm font-semibold transition ${o.sec === timerSec ? "border-indigo-500 bg-indigo-50 text-indigo-700" : "border-slate-200 text-slate-500 hover:border-slate-300"}" data-sec="${o.sec}">${o.label}</button>`).join("")}
+              <button class="timer-opt rounded-xl border py-2 text-sm font-semibold transition ${o.sec === timerSec ? "border-indigo-500 bg-indigo-50 text-indigo-700" : "border-slate-200 text-slate-500 hover:border-slate-300"}" data-sec="${o.sec}">${escapeHtml(o.sec === 0 ? t.timerOff : o.label)}</button>`).join("")}
           </div>
-          <p class="mt-2 text-xs text-slate-400">Faster answers and answer streaks earn bonus points.</p>
+          <p class="mt-2 text-xs text-slate-400">${escapeHtml(t.timerHint)}</p>
 
           <button id="start" class="mt-6 w-full rounded-xl bg-indigo-600 py-3.5 text-base font-semibold text-white shadow-sm transition hover:bg-indigo-700 active:scale-[.99]">
-            Start quiz
+            ${escapeHtml(t.startQuiz)}
           </button>
         </section>
 
         ${history.length ? recentGames(history) : ""}
       `);
+
+      app.querySelector("#langSel").addEventListener("change", (e) => {
+        setLang(e.target.value);
+        viewHome();
+      });
 
       // player name + remove
       app.querySelectorAll(".player-name").forEach((inp) => {
@@ -287,7 +361,7 @@
         btn.addEventListener("click", (e) => { players.splice(+e.currentTarget.dataset.i, 1); draw(); });
       });
       app.querySelector("#addPlayer").addEventListener("click", () => {
-        players.push({ name: "Player " + (players.length + 1) });
+        players.push({ name: t.player + " " + (players.length + 1) });
         draw();
       });
 
@@ -307,9 +381,9 @@
       // topics
       app.querySelectorAll(".topic-chip").forEach((btn) => {
         btn.addEventListener("click", () => {
-          const t = btn.dataset.topic;
-          const idx = selTopics.indexOf(t);
-          if (idx >= 0) selTopics.splice(idx, 1); else selTopics.push(t);
+          const topic = btn.dataset.topic;
+          const idx = selTopics.indexOf(topic);
+          if (idx >= 0) selTopics.splice(idx, 1); else selTopics.push(topic);
           syncTopics();
         });
       });
@@ -335,7 +409,7 @@
       app.querySelector("#start").addEventListener("click", () => {
         const clean = players.map((p) => ({ name: p.name.trim() }))
           .filter((p) => p.name);
-        if (clean.length === 0) { alert("Add at least one player."); return; }
+        if (clean.length === 0) { alert(t.addPlayerAlert); return; }
         if (selTopics.length === 0) { app.querySelector("#topicWarn").classList.remove("hidden"); return; }
         if (selTypes.length === 0) { app.querySelector("#typeWarn").classList.remove("hidden"); return; }
         // keep the enabled types in the canonical display order
@@ -373,18 +447,18 @@
         <div class="flex items-center gap-2">
           <span class="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-indigo-100 text-sm font-semibold text-indigo-700">${i + 1}</span>
           <input class="player-name min-w-0 flex-1 rounded-xl border border-slate-200 bg-slate-50 px-3 py-2.5 text-sm focus:border-indigo-400 focus:outline-none focus:ring-2 focus:ring-indigo-100"
-                 data-i="${i}" value="${escapeHtml(p.name)}" maxlength="24" placeholder="Name" />
-          ${count > 1 ? `<button class="player-remove shrink-0 rounded-lg p-2 text-slate-400 hover:bg-rose-50 hover:text-rose-500" data-i="${i}" aria-label="Remove">✕</button>` : ""}
+                 data-i="${i}" value="${escapeHtml(p.name)}" maxlength="24" placeholder="${escapeHtml(t.namePlaceholder)}" />
+          ${count > 1 ? `<button class="player-remove shrink-0 rounded-lg p-2 text-slate-400 hover:bg-rose-50 hover:text-rose-500" data-i="${i}" aria-label="${escapeHtml(t.removeLabel)}">✕</button>` : ""}
         </div>`;
     }
 
-    function typeRow(t, on) {
+    function typeRow(key, on) {
       return `
-        <label class="type-row flex cursor-pointer items-center gap-3 rounded-xl border ${on ? "border-indigo-300 bg-indigo-50" : "border-slate-200 bg-slate-50"} px-3 py-2.5 transition" data-key="${t.key}">
-          <input type="checkbox" class="type-check h-4 w-4 shrink-0 accent-indigo-600" data-key="${t.key}" ${on ? "checked" : ""} />
+        <label class="type-row flex cursor-pointer items-center gap-3 rounded-xl border ${on ? "border-indigo-300 bg-indigo-50" : "border-slate-200 bg-slate-50"} px-3 py-2.5 transition" data-key="${key}">
+          <input type="checkbox" class="type-check h-4 w-4 shrink-0 accent-indigo-600" data-key="${key}" ${on ? "checked" : ""} />
           <span class="min-w-0">
-            <span class="block text-sm font-medium text-slate-700">${t.label}</span>
-            <span class="block text-xs text-slate-400">${t.hint}</span>
+            <span class="block text-sm font-medium text-slate-700">${escapeHtml(qtypeLabel(key))}</span>
+            <span class="block text-xs text-slate-400">${escapeHtml(qtypeHint(key))}</span>
           </span>
         </label>`;
     }
@@ -393,15 +467,15 @@
       return "topic-chip rounded-full border px-3 py-1.5 text-xs font-medium transition " +
         (on ? "border-indigo-500 bg-indigo-600 text-white" : "border-slate-200 bg-white text-slate-500 hover:border-slate-300");
     }
-    function topicChip(t, on) {
-      return `<button class="${topicChipClass(on)}" data-topic="${escapeHtml(t)}">${escapeHtml(niceTopic(t))}</button>`;
+    function topicChip(topic, on) {
+      return `<button class="${topicChipClass(on)}" data-topic="${escapeHtml(topic)}">${escapeHtml(niceTopic(topic))}</button>`;
     }
 
     function recentGames(history) {
       const recent = history.slice(-5).reverse();
       return `
         <section class="mt-4 rounded-2xl bg-white p-5 shadow-sm ring-1 ring-slate-200">
-          <h2 class="text-sm font-semibold uppercase tracking-wide text-slate-500">Recent games</h2>
+          <h2 class="text-sm font-semibold uppercase tracking-wide text-slate-500">${escapeHtml(t.recentGames)}</h2>
           <ul class="mt-3 space-y-2">
             ${recent.map((g) => `
               <li class="flex items-center justify-between rounded-xl bg-slate-50 px-3 py-2 text-sm">
@@ -409,7 +483,7 @@
                 <span class="truncate pl-3 text-right text-slate-400">${escapeHtml(g.summary)}</span>
               </li>`).join("")}
           </ul>
-          <button id="clearHistory" class="mt-3 text-xs text-slate-400 hover:text-rose-500">Clear history</button>
+          <button id="clearHistory" class="mt-3 text-xs text-slate-400 hover:text-rose-500">${escapeHtml(t.clearHistory)}</button>
         </section>`;
     }
 
@@ -422,22 +496,22 @@
     const player = game.players[playerIndex];
     const round = Math.floor(game.turn / game.players.length) + 1;
     const streakLine = player.streak >= 2
-      ? `<p class="mt-2 text-sm font-semibold text-orange-500">🔥 ${player.streak} in a row — keep it going!</p>` : "";
+      ? `<p class="mt-2 text-sm font-semibold text-orange-500">🔥 ${escapeHtml(fmt(t.inARow, { n: player.streak }))}</p>` : "";
     render(`
       <div class="flex min-h-[70vh] flex-col items-center justify-center text-center">
-        <p class="text-sm font-medium uppercase tracking-wide text-indigo-500">Question ${game.turn + 1} of ${game.schedule.length}</p>
-        <p class="mt-6 text-sm text-slate-500">Pass the device to</p>
+        <p class="text-sm font-medium uppercase tracking-wide text-indigo-500">${escapeHtml(fmt(t.questionXofY, { n: game.turn + 1, m: game.schedule.length }))}</p>
+        <p class="mt-6 text-sm text-slate-500">${escapeHtml(t.passDeviceTo)}</p>
         <h1 class="mt-2 text-4xl font-bold text-slate-900">${escapeHtml(player.name)}</h1>
-        <p class="mt-4 text-sm text-slate-400">Round ${round} of ${game.perPlayer} &middot; ${player.score} pts</p>
+        <p class="mt-4 text-sm text-slate-400">${escapeHtml(fmt(t.roundXofY, { n: round, m: game.perPlayer }))} &middot; ${player.score} ${escapeHtml(t.pts)}</p>
         ${streakLine}
         <button id="ready" class="mt-8 w-full max-w-xs rounded-xl bg-indigo-600 py-3.5 text-base font-semibold text-white shadow-sm transition hover:bg-indigo-700 active:scale-[.99]">
-          I'm ready
+          ${escapeHtml(t.imReady)}
         </button>
-        <button id="quit" class="mt-4 text-sm text-slate-400 hover:text-slate-600">Quit game</button>
+        <button id="quit" class="mt-4 text-sm text-slate-400 hover:text-slate-600">${escapeHtml(t.quitGame)}</button>
       </div>
     `);
     app.querySelector("#ready").addEventListener("click", () => { game.selected = null; viewQuestion(); });
-    app.querySelector("#quit").addEventListener("click", () => { if (confirm("Quit this game?")) viewHome(); });
+    app.querySelector("#quit").addEventListener("click", () => { if (confirm(t.quitConfirm)) viewHome(); });
   }
 
   // ---- Question ----
@@ -447,13 +521,13 @@
     const q = entry.question;
     const progress = (game.turn / game.schedule.length) * 100;
     const BADGES = {
-      ref: ["bg-amber-100", "text-amber-700", "Name the scripture"],
-      passage: ["bg-sky-100", "text-sky-700", "Match the passage"],
-      topic: ["bg-violet-100", "text-violet-700", "Name the topic"],
-      meaning: ["bg-emerald-100", "text-emerald-700", "Name the truth"],
+      ref: ["bg-amber-100", "text-amber-700"],
+      passage: ["bg-sky-100", "text-sky-700"],
+      topic: ["bg-violet-100", "text-violet-700"],
+      meaning: ["bg-emerald-100", "text-emerald-700"],
     };
-    const [badgeBg, badgeText, badgeLabel] = BADGES[q.type] || BADGES.meaning;
-    const badge = `<span class="rounded-full ${badgeBg} px-2.5 py-1 text-xs font-semibold ${badgeText}">${badgeLabel}</span>`;
+    const [badgeBg, badgeText] = BADGES[q.type] || BADGES.meaning;
+    const badge = `<span class="rounded-full ${badgeBg} px-2.5 py-1 text-xs font-semibold ${badgeText}">${escapeHtml(t.typeLabels[q.type])}</span>`;
     const streakBadge = player.streak >= 2
       ? `<span class="text-xs font-semibold text-orange-500">🔥 ${player.streak}</span>` : "";
     const timerBlock = game.timerSec ? `
@@ -471,7 +545,7 @@
         </div>
         <div class="flex items-center justify-between">
           <span class="text-sm font-semibold text-slate-700">${escapeHtml(player.name)}</span>
-          <span class="flex items-center gap-2 text-xs text-slate-400">${streakBadge}<span>${player.score} pts</span></span>
+          <span class="flex items-center gap-2 text-xs text-slate-400">${streakBadge}<span>${player.score} ${escapeHtml(t.pts)}</span></span>
         </div>
 
         <div class="mt-3 flex items-center gap-2">${badge}
@@ -482,14 +556,14 @@
 
         ${q.type === "passage" || q.type === "topic"
           ? `<div class="mt-3 rounded-2xl bg-white p-6 text-center shadow-sm ring-1 ring-slate-200">
-               <p class="text-xs uppercase tracking-wide text-slate-400">Scripture reference</p>
+               <p class="text-xs uppercase tracking-wide text-slate-400">${escapeHtml(t.scriptureReference)}</p>
                <p class="mt-1 font-serif text-2xl font-semibold text-slate-800">${escapeHtml(q.scripture.ref)}</p>
              </div>`
           : `<div class="scripture-scroll mt-3 max-h-[40vh] overflow-y-auto rounded-2xl bg-white p-5 shadow-sm ring-1 ring-slate-200">
                <p class="font-serif text-[1.05rem] leading-relaxed text-slate-800">${escapeHtml(q.scripture.text)}</p>
              </div>`}
 
-        <p class="mt-5 text-center text-base font-semibold text-slate-700">${escapeHtml(q.prompt)}</p>
+        <p class="mt-5 text-center text-base font-semibold text-slate-700">${escapeHtml(t.prompts[q.type])}</p>
 
         <div id="options" class="mt-3 space-y-2.5">
           ${q.options.map((opt, i) => `
@@ -576,25 +650,25 @@
       }
     });
 
-    const heading = isRight ? "✓ Correct!" : timedOut ? "⏱ Time's up!" : "✕ Not quite.";
+    const heading = isRight ? "✓ " + t.correct : timedOut ? "⏱ " + t.timesUp : "✕ " + t.notQuite;
     const breakdown = isRight ? [
-      `+${base} base`,
-      timeBonus > 0 ? `+${timeBonus} speed` : null,
-      streakBonus > 0 ? `+${streakBonus} streak 🔥` : null,
-    ].filter(Boolean).join("&nbsp;&nbsp;") + `&nbsp;&nbsp;=&nbsp;&nbsp;<span class="font-bold">${gained} pts</span>` : "";
+      `+${base} ${escapeHtml(t.baseBonus)}`,
+      timeBonus > 0 ? `+${timeBonus} ${escapeHtml(t.speedBonus)}` : null,
+      streakBonus > 0 ? `+${streakBonus} ${escapeHtml(t.streakBonus)} 🔥` : null,
+    ].filter(Boolean).join("&nbsp;&nbsp;") + `&nbsp;&nbsp;=&nbsp;&nbsp;<span class="font-bold">${gained} ${escapeHtml(t.pts)}</span>` : "";
 
     const isLast = game.turn === game.schedule.length - 1;
     app.querySelector("#feedback").innerHTML = `
       <div class="rounded-2xl ${isRight ? "bg-emerald-50 ring-emerald-200" : "bg-rose-50 ring-rose-200"} p-4 ring-1">
         <div class="flex items-center justify-between">
-          <p class="text-sm font-semibold ${isRight ? "text-emerald-700" : "text-rose-700"}">${heading}</p>
+          <p class="text-sm font-semibold ${isRight ? "text-emerald-700" : "text-rose-700"}">${escapeHtml(heading)}</p>
           ${isRight ? `<p class="text-sm text-emerald-700">${breakdown}</p>` : ""}
         </div>
         <p class="mt-1 text-sm text-slate-600">
           <span class="font-semibold">${escapeHtml(q.scripture.ref)}</span> &mdash; ${escapeHtml(q.scripture.summary)}
         </p>
         <button id="next" class="mt-3 w-full rounded-xl bg-slate-800 py-3 text-sm font-semibold text-white transition hover:bg-slate-900 active:scale-[.99]">
-          ${isLast ? "See results" : "Next player →"}
+          ${escapeHtml(isLast ? t.seeResults : t.nextPlayer)}
         </button>
       </div>`;
     const nextBtn = app.querySelector("#next");
@@ -626,8 +700,8 @@
     render(`
       <header class="pt-8 pb-4 text-center">
         <div class="text-5xl">🏆</div>
-        <h1 class="mt-3 text-2xl font-bold text-slate-900">${tie ? "It's a tie!" : escapeHtml(winners[0]) + " wins!"}</h1>
-        <p class="mt-1 text-sm text-slate-500">${game.schedule.length} questions &middot; ${game.perPlayer} per player${game.timerSec ? ` &middot; ${game.timerSec}s timer` : ""}</p>
+        <h1 class="mt-3 text-2xl font-bold text-slate-900">${tie ? escapeHtml(t.tie) : escapeHtml(fmt(t.wins, { name: winners[0] }))}</h1>
+        <p class="mt-1 text-sm text-slate-500">${escapeHtml(fmt(t.resultsMeta, { q: game.schedule.length, p: game.perPlayer }))}${game.timerSec ? " &middot; " + escapeHtml(fmt(t.timerMeta, { s: game.timerSec })) : ""}</p>
       </header>
 
       <section class="space-y-2.5">
@@ -636,21 +710,21 @@
             <span class="w-7 text-center text-2xl">${medals[i] || `<span class="text-base font-semibold text-slate-400">${i + 1}</span>`}</span>
             <div class="min-w-0 flex-1">
               <p class="truncate font-semibold text-slate-800">${escapeHtml(p.name)}</p>
-              <p class="text-xs text-slate-400">${p.correct}/${p.answered} correct &middot; ${p.pct}%${p.bestStreak >= 2 ? ` &middot; 🔥 best ${p.bestStreak}` : ""}</p>
+              <p class="text-xs text-slate-400">${p.correct}/${p.answered} ${escapeHtml(t.correctLabel)} &middot; ${p.pct}%${p.bestStreak >= 2 ? ` &middot; 🔥 ${escapeHtml(t.bestLabel)} ${p.bestStreak}` : ""}</p>
             </div>
             <div class="text-right">
               <span class="text-2xl font-bold text-indigo-600">${p.score}</span>
-              <span class="block text-[10px] uppercase tracking-wide text-slate-400">points</span>
+              <span class="block text-[10px] uppercase tracking-wide text-slate-400">${escapeHtml(t.points)}</span>
             </div>
           </div>`).join("")}
       </section>
 
       <div class="mt-6 space-y-2.5">
         <button id="again" class="w-full rounded-xl bg-indigo-600 py-3.5 text-base font-semibold text-white shadow-sm transition hover:bg-indigo-700 active:scale-[.99]">
-          Play again (same settings)
+          ${escapeHtml(t.playAgain)}
         </button>
         <button id="home" class="w-full rounded-xl bg-white py-3.5 text-base font-semibold text-slate-700 shadow-sm ring-1 ring-slate-200 transition hover:bg-slate-50">
-          Change setup
+          ${escapeHtml(t.changeSetup)}
         </button>
       </div>
     `);
@@ -668,6 +742,7 @@
   if (!DATA || !DATA.scriptures || !DATA.scriptures.length) {
     app.innerHTML = '<p class="p-8 text-center text-rose-600">Failed to load quiz data.</p>';
   } else {
+    updateChrome();
     viewHome();
   }
 })();
